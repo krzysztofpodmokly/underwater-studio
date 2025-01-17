@@ -1,6 +1,9 @@
-import Scene from "@/components/3d/Scene";
+"use client";
+
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { View } from "@react-three/drei";
+import Scene from "./Scene";
 
 /**
  * Props for `Hero`.
@@ -13,20 +16,11 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-      <Scene />
+      <View className="hero pointer-events-none h-screen w-screen z-50">
+        <Scene />
+      </View>
     </section>
   );
 };
 
 export default Hero;
-
-// import dynamic from "next/dynamic";
-
-// const Scene = dynamic(() => import("@/components/3d/Scene"), {
-//   loading: () => <p>Loading...</p>,
-//   ssr: false,
-// });
-
-// export default function Home() {
-//   return <div className="relative h-screen">{/* <Scene /> */}</div>;
-// }

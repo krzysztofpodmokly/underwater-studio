@@ -56,7 +56,7 @@ void main() {
   float iorRatioBlue = 1.0 / uIorB;
   float iorRatioViolet = 1.0 / uIorP;
 
-  vec3 color = vec3(0.0);
+  vec3 color = vec3(0.0, 0.0627451, 0.0666667);
 
   vec2 uv = gl_FragCoord.xy / winResolution.xy;
   vec3 normal = worldNormal;
