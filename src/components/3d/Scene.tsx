@@ -9,7 +9,7 @@ const Scene = () => {
   return (
     <Canvas camera={{ position: [-3, 0, 6] }} dpr={[1, 2]}>
       <Perf position="top-left" />
-      <color attach="background" args={["black"]} />
+      {/* <color attach="background" args={["black"]} /> */}
       <Environment preset="city" />
       <OrbitControls />
       <Text position={[0, 0, -3]} color={"red"}>

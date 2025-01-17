@@ -9,7 +9,7 @@ import fragmentShader from "./shaders/fragment.glsl";
 import { range } from "@/utils/range";
 
 const Dispersion = () => {
-  const { nodes } = useGLTF("/sphere.glb");
+  const { nodes } = useGLTF("/models/sphere.glb");
   const mesh = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
   const backgroundGroup = useRef<THREE.Group>(null);
   const mainRenderTarget = useFBO();
