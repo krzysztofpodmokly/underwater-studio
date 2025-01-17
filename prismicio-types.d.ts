@@ -70,25 +70,25 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Navigation → navigation*
+ * Item in *Navigation → items*
  */
-export interface NavigationDocumentDataNavigationItem {
+export interface NavigationDocumentDataItemsItem {
   /**
-   * Label field in *Navigation → navigation*
+   * Label field in *Navigation → items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.navigation[].label
+   * - **API ID Path**: navigation.items[].label
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
 
   /**
-   * Link field in *Navigation → navigation*
+   * Link field in *Navigation → items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.navigation[].link
+   * - **API ID Path**: navigation.items[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
@@ -99,17 +99,15 @@ export interface NavigationDocumentDataNavigationItem {
  */
 interface NavigationDocumentData {
   /**
-   * navigation field in *Navigation*
+   * items field in *Navigation*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.navigation[]
+   * - **API ID Path**: navigation.items[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  navigation: prismic.GroupField<
-    Simplify<NavigationDocumentDataNavigationItem>
-  >;
+  items: prismic.GroupField<Simplify<NavigationDocumentDataItemsItem>>;
 }
 
 /**
@@ -198,7 +196,7 @@ declare module "@prismicio/client" {
       HomepageDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
-      NavigationDocumentDataNavigationItem,
+      NavigationDocumentDataItemsItem,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,

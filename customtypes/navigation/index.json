@@ -6,10 +6,10 @@
   "status": true,
   "json": {
     "Main": {
-      "navigation": {
+      "items": {
         "type": "Group",
         "config": {
-          "label": "navigation",
+          "label": "items",
           "repeat": true,
           "fields": {
             "label": {

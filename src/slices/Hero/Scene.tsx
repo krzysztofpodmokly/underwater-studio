@@ -1,6 +1,6 @@
 "use client";
 
-import { Environment, Text, View } from "@react-three/drei";
+import { Environment, Text } from "@react-three/drei";
 
 import Dispersion from "@/components/3d/Dispersion";
 
