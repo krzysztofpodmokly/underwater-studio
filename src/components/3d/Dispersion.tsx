@@ -4,45 +4,85 @@ import { useFBO, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { forwardRef, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { useControls } from "leva";
+import { useControls, folder } from "leva";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import { range } from "@/utils/range";
 
 useGLTF.preload("/models/sphere.glb");
 
-type DispersionModelProps = {};
+type DispersionModelProps = {
+  name: string;
+  positionFrequency: number;
+  timeFrequency: number;
+  strength: number;
+  warpPositionFrequency: number;
+  warpTimeFrequency: number;
+  warpStrength: number;
+};
 
 const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
-  (props, ref) => {
+  (
+    {
+      name,
+      positionFrequency,
+      timeFrequency,
+      strength,
+      warpPositionFrequency,
+      warpTimeFrequency,
+      warpStrength,
+    },
+    ref,
+  ) => {
     const { nodes } = useGLTF("/models/sphere.glb");
     const mesh =
       useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
     // const backgroundGroup = useRef<THREE.Group>(null);
     const mainRenderTarget = useFBO();
 
-    const materialProps = useControls({
-      iorR: { value: 1.15, min: 1.0, max: 2.333, step: 0.001 },
-      iorY: { value: 1.16, min: 1.0, max: 2.333, step: 0.001 },
-      iorG: { value: 1.18, min: 1.0, max: 2.333, step: 0.001 },
-      iorC: { value: 1.22, min: 1.0, max: 2.333, step: 0.001 },
-      iorB: { value: 1.22, min: 1.0, max: 2.333, step: 0.001 },
-      iorP: { value: 1.23, min: 1.0, max: 2.333, step: 0.001 },
-      refraction: { value: 0.4, min: 0, max: 1, step: 0.001 },
-      chromaticAberration: { value: 0.5, min: 0, max: 1.5, step: 0.001 },
-      saturation: { value: 1.06, min: 0, max: 1.25, step: 0.001 },
-      light: { value: { x: -1, y: 1, z: 1 } },
-      diffuseness: { value: 0.2 },
-      shininess: { value: 40.0 },
-      fresnelPower: { value: 8 },
+    const materialProps = useControls(`${name}`, {
+      ior: folder({
+        iorR: { value: 1.15, min: 1.0, max: 2.333, step: 0.001 },
+        iorY: { value: 1.16, min: 1.0, max: 2.333, step: 0.001 },
+        iorG: { value: 1.18, min: 1.0, max: 2.333, step: 0.001 },
+        iorC: { value: 1.22, min: 1.0, max: 2.333, step: 0.001 },
+        iorB: { value: 1.22, min: 1.0, max: 2.333, step: 0.001 },
+        iorP: { value: 1.23, min: 1.0, max: 2.333, step: 0.001 },
+      }),
 
-      positionFrequency: { value: 0.15, min: 0, max: 2, step: 0.001 },
-      timeFrequency: { value: 0.25, min: 0, max: 2, step: 0.001 },
-      strength: { value: 0.15, min: 0, max: 2, step: 0.001 },
-      warpPositionFrequency: { value: 1.3, min: 0, max: 2, step: 0.001 },
-      warpTimeFrequency: { value: 0.4, min: 0, max: 2, step: 0.001 },
-      warpStrength: { value: 0.6, min: 0, max: 2, step: 0.001 },
+      effects: folder({
+        refraction: { value: 0.4, min: 0, max: 1, step: 0.001 },
+        chromaticAberration: { value: 0.5, min: 0, max: 1.5, step: 0.001 },
+        saturation: { value: 1.06, min: 0, max: 1.25, step: 0.001 },
+        light: { value: { x: -1, y: 1, z: 1 } },
+        diffuseness: { value: 0.2 },
+        shininess: { value: 40.0 },
+        fresnelPower: { value: 8 },
+      }),
+
+      wobble: folder({
+        positionFrequency: {
+          value: positionFrequency,
+          min: 0,
+          max: 2,
+          step: 0.001,
+        },
+        timeFrequency: { value: timeFrequency, min: 0, max: 2, step: 0.001 },
+        strength: { value: strength, min: 0, max: 2, step: 0.001 },
+        warpPositionFrequency: {
+          value: warpPositionFrequency,
+          min: 0,
+          max: 2,
+          step: 0.001,
+        },
+        warpTimeFrequency: {
+          value: warpTimeFrequency,
+          min: 0,
+          max: 2,
+          step: 0.001,
+        },
+        warpStrength: { value: warpStrength, min: 0, max: 2, step: 0.001 },
+      }),
     });
 
     const uniforms = useMemo(
@@ -82,27 +122,6 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
 
     useFrame(({ gl, scene, camera, clock }) => {
       if (!mesh.current) return;
-      const {
-        iorR,
-        iorY,
-        iorG,
-        iorC,
-        iorB,
-        iorP,
-        refraction,
-        chromaticAberration,
-        saturation,
-        light,
-        diffuseness,
-        shininess,
-        positionFrequency,
-        timeFrequency,
-        strength,
-        fresnelPower,
-        warpPositionFrequency,
-        warpTimeFrequency,
-        warpStrength,
-      } = materialProps;
       const elapsedTime = clock.getElapsedTime();
       // Pass the snapshot texture data to our shader material
 
@@ -124,37 +143,43 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
       mesh.current.visible = true;
 
       // Set chromatic aberration values for the shader
-      mesh.current.material.uniforms.uIorR.value = iorR;
-      mesh.current.material.uniforms.uIorG.value = iorG;
-      mesh.current.material.uniforms.uIorB.value = iorB;
-      mesh.current.material.uniforms.uIorY.value = iorY;
-      mesh.current.material.uniforms.uIorC.value = iorC;
-      mesh.current.material.uniforms.uIorP.value = iorP;
-      mesh.current.material.uniforms.uRefractPower.value = refraction;
+      mesh.current.material.uniforms.uIorR.value = materialProps.iorR;
+      mesh.current.material.uniforms.uIorG.value = materialProps.iorG;
+      mesh.current.material.uniforms.uIorB.value = materialProps.iorB;
+      mesh.current.material.uniforms.uIorY.value = materialProps.iorY;
+      mesh.current.material.uniforms.uIorC.value = materialProps.iorC;
+      mesh.current.material.uniforms.uIorP.value = materialProps.iorP;
+      mesh.current.material.uniforms.uRefractPower.value =
+        materialProps.refraction;
       mesh.current.material.uniforms.uChromaticAberration.value =
-        chromaticAberration;
-      mesh.current.material.uniforms.uSaturation.value = saturation;
-      mesh.current.material.uniforms.uDiffuseness.value = diffuseness;
-      mesh.current.material.uniforms.uShininess.value = shininess;
+        materialProps.chromaticAberration;
+      mesh.current.material.uniforms.uSaturation.value =
+        materialProps.saturation;
+      mesh.current.material.uniforms.uDiffuseness.value =
+        materialProps.diffuseness;
+      mesh.current.material.uniforms.uShininess.value = materialProps.shininess;
       mesh.current.material.uniforms.uLight.value = new THREE.Vector3(
-        light.x,
-        light.y,
-        light.z,
+        materialProps.light.x,
+        materialProps.light.y,
+        materialProps.light.z,
       );
-      mesh.current.material.uniforms.uFresnelPower.value = fresnelPower;
+      mesh.current.material.uniforms.uFresnelPower.value =
+        materialProps.fresnelPower;
 
       mesh.current.material.uniforms.uTime.value = elapsedTime;
 
       mesh.current.material.uniforms.uPositionFrequency.value =
-        positionFrequency;
-      mesh.current.material.uniforms.uTimeFrequency.value = timeFrequency;
-      mesh.current.material.uniforms.uStrength.value = strength;
+        materialProps.positionFrequency;
+      mesh.current.material.uniforms.uTimeFrequency.value =
+        materialProps.timeFrequency;
+      mesh.current.material.uniforms.uStrength.value = materialProps.strength;
 
       mesh.current.material.uniforms.uWarpPositionFrequency.value =
-        warpPositionFrequency;
+        materialProps.warpPositionFrequency;
       mesh.current.material.uniforms.uWarpTimeFrequency.value =
-        warpTimeFrequency;
-      mesh.current.material.uniforms.uWarpStrength.value = warpStrength;
+        materialProps.warpTimeFrequency;
+      mesh.current.material.uniforms.uWarpStrength.value =
+        materialProps.warpStrength;
     });
 
     const depthMaterial = new THREE.MeshDepthMaterial({
