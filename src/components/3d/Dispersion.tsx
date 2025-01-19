@@ -12,7 +12,8 @@ import { range } from "@/utils/range";
 
 const Dispersion = () => {
   const { nodes } = useGLTF("/models/sphere.glb");
-  const mesh = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
+  const mesh =
+    useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
   const backgroundGroup = useRef<THREE.Group>(null);
   const mainRenderTarget = useFBO();
 
@@ -59,8 +60,8 @@ const Dispersion = () => {
       uTime: new THREE.Uniform(0.0),
       winResolution: new THREE.Uniform(
         new THREE.Vector2(window.innerWidth, window.innerHeight).multiplyScalar(
-          Math.min(window.devicePixelRatio, 2)
-        )
+          Math.min(window.devicePixelRatio, 2),
+        ),
       ),
 
       uPositionFrequency: new THREE.Uniform(0.5),
@@ -70,7 +71,7 @@ const Dispersion = () => {
       uWarpTimeFrequency: new THREE.Uniform(0.12),
       uWarpStrength: new THREE.Uniform(1.7),
     }),
-    []
+    [],
   );
 
   useFrame(({ gl, scene, camera, clock }) => {
@@ -124,11 +125,16 @@ const Dispersion = () => {
     mesh.current.material.uniforms.uIorC.value = iorC;
     mesh.current.material.uniforms.uIorP.value = iorP;
     mesh.current.material.uniforms.uRefractPower.value = refraction;
-    mesh.current.material.uniforms.uChromaticAberration.value = chromaticAberration;
+    mesh.current.material.uniforms.uChromaticAberration.value =
+      chromaticAberration;
     mesh.current.material.uniforms.uSaturation.value = saturation;
     mesh.current.material.uniforms.uDiffuseness.value = diffuseness;
     mesh.current.material.uniforms.uShininess.value = shininess;
-    mesh.current.material.uniforms.uLight.value = new THREE.Vector3(light.x, light.y, light.z);
+    mesh.current.material.uniforms.uLight.value = new THREE.Vector3(
+      light.x,
+      light.y,
+      light.z,
+    );
     mesh.current.material.uniforms.uFresnelPower.value = fresnelPower;
 
     mesh.current.material.uniforms.uTime.value = elapsedTime;
@@ -137,7 +143,8 @@ const Dispersion = () => {
     mesh.current.material.uniforms.uTimeFrequency.value = timeFrequency;
     mesh.current.material.uniforms.uStrength.value = strength;
 
-    mesh.current.material.uniforms.uWarpPositionFrequency.value = warpPositionFrequency;
+    mesh.current.material.uniforms.uWarpPositionFrequency.value =
+      warpPositionFrequency;
     mesh.current.material.uniforms.uWarpTimeFrequency.value = warpTimeFrequency;
     mesh.current.material.uniforms.uWarpStrength.value = warpStrength;
   });
@@ -150,7 +157,7 @@ const Dispersion = () => {
   });
 
   return (
-    <>
+    <group>
       <group ref={backgroundGroup}>
         {columns.map((col: number, i: number) =>
           rows.map((row: number, j: number) => (
@@ -158,7 +165,7 @@ const Dispersion = () => {
               <icosahedronGeometry args={[0.333, 8]} />
               <meshStandardMaterial color="white" />
             </mesh>
-          ))
+          )),
         )}
       </group>
 
@@ -176,7 +183,7 @@ const Dispersion = () => {
           uniforms={uniforms}
         />
       </mesh>
-    </>
+    </group>
   );
 };
 

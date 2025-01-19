@@ -6,7 +6,7 @@ import "./globals.css";
 
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/Footer";
-import Scene from "@/components/3d/Scene";
+import ViewCanvas from "@/components/3d/ViewCanvas";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,7 +39,7 @@ export default function RootLayout({
         <main>
           <Header />
           {children}
-          <Scene />
+          <ViewCanvas />
           <Footer />
         </main>
       </body>

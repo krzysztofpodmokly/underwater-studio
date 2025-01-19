@@ -7,7 +7,7 @@ const Header = async () => {
   const navigation = await client.getSingle("navigation");
 
   return (
-    <header className="z-50 mx-auto max-w-7xl md:sticky">
+    <header className="z-50 mx-auto max-w-7xl md:absolute">
       <Navigation navigation={navigation} />
     </header>
   );

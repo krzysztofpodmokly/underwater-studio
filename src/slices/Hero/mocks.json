@@ -3,16 +3,73 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
+			"heading": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Horse"
+							"text": "Satellites"
 						}
 					}
 				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "health",
+				"type": "Text"
+			},
+			"button_link": {
+				"key": "154d8212-6a2d-44d3-8002-3423e03724d7",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "metal"
+				}
+			},
+			"subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading3",
+						"content": {
+							"text": "Frame"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur amet in exercitation. Ipsum cupidatat reprehenderit qui."
+						}
+					}
+				]
+			},
+			"bubble_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+					"width": 6000,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+				"width": 6000,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
 			}
 		},
 		"items": []

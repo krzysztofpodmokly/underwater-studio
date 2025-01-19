@@ -10,7 +10,7 @@ const Scene = (props: Props) => {
   return (
     <>
       <Environment preset="city" />
-      <Text>Underwater studio</Text>
+      {/* <Text>Underwater studio</Text> */}
       <Dispersion />
     </>
   );
