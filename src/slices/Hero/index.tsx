@@ -22,7 +22,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       className="hero"
     >
       <View className="hero-scene pointer-events-none z-50 h-screen w-screen">
-        {/* <Scene /> */}
+        <Scene />
       </View>
     </Bounded>
   );

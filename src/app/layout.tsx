@@ -4,7 +4,7 @@ import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import "./globals.css";
 
-import Header from "@/components/Header";
+import Header from "@/components/navigation/Header";
 import Footer from "@/components/Footer";
 import Scene from "@/components/3d/Scene";
 
@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={nunito.variable}>
-      <body className={`antialiased bg-[#001011] overflow-x-hidden text-white`}>
+      <body className={`overflow-x-hidden bg-[#001011] text-white antialiased`}>
         <main>
           <Header />
           {children}
