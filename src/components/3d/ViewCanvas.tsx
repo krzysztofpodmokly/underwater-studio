@@ -1,18 +1,9 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-// import Dispersion from "./Dispersion";
-import {
-  Environment,
-  Float,
-  OrbitControls,
-  Text,
-  View,
-} from "@react-three/drei";
+import { View } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import { Suspense } from "react";
-import Dispersion from "./Dispersion";
-import Background from "./Background";
 
 const ViewCanvas = () => {
   return (
@@ -22,10 +13,10 @@ const ViewCanvas = () => {
       style={{
         position: "fixed",
         top: 0,
-        // left: "50%",
-        // transform: "translateX(-50%)",
+        left: "50%",
+        transform: "translateX(-50%)",
         overflow: "hidden",
-        pointerEvents: "none",
+        // pointerEvents: "none",
         zIndex: 30,
       }}
       gl={{
@@ -33,25 +24,11 @@ const ViewCanvas = () => {
       }}
       shadows
     >
-      {/* <Perf position="top-left" /> */}
-      {/* <color attach="background" args={["blue"]} /> */}
+      <Perf position="top-left" />
 
-      {/* <OrbitControls /> */}
-
-      <Float
-        speed={1}
-        rotationIntensity={1}
-        floatIntensity={1}
-        floatingRange={[1, 3]}
-      >
-        <Dispersion />
-      </Float>
-      <Environment preset="city" />
-      <Background />
-
-      {/* <Suspense fallback={null}>
+      <Suspense fallback={null}>
         <View.Port />
-      </Suspense> */}
+      </Suspense>
     </Canvas>
   );
 };

@@ -116,8 +116,8 @@ float getWobble(vec3 position) {
 
   float wobble = simplexNoise4d(vec4(
     warpedPosition * uPositionFrequency,
-    // uTime * uTimeFrequency
-    0.0
+    uTime * uTimeFrequency
+    // 0.0
   )) * uStrength;
   return wobble;
 }

@@ -73,7 +73,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         backgroundColor: "#093a3e",
         overwrite: "auto",
       },
-      1,
+      0,
     );
   });
 
@@ -83,9 +83,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      {/* <View className="">
+      <View className="ffpointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
-      </View> */}
+      </View>
       <div className="relative z-[100] grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">

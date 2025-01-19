@@ -37,10 +37,10 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
       shininess: { value: 40.0 },
       fresnelPower: { value: 8 },
 
-      positionFrequency: { value: 0.1, min: 0, max: 2, step: 0.001 },
-      timeFrequency: { value: 0.5, min: 0, max: 2, step: 0.001 },
-      strength: { value: 0.3, min: 0, max: 2, step: 0.001 },
-      warpPositionFrequency: { value: 0.2, min: 0, max: 2, step: 0.001 },
+      positionFrequency: { value: 0.15, min: 0, max: 2, step: 0.001 },
+      timeFrequency: { value: 0.25, min: 0, max: 2, step: 0.001 },
+      strength: { value: 0.15, min: 0, max: 2, step: 0.001 },
+      warpPositionFrequency: { value: 1.3, min: 0, max: 2, step: 0.001 },
       warpTimeFrequency: { value: 0.4, min: 0, max: 2, step: 0.001 },
       warpStrength: { value: 0.6, min: 0, max: 2, step: 0.001 },
     });
@@ -157,26 +157,12 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
       mesh.current.material.uniforms.uWarpStrength.value = warpStrength;
     });
 
-    const columns = range(-7.5, 7.5, 2.5);
-    const rows = range(-7.5, 7.5, 2.5);
-
     const depthMaterial = new THREE.MeshDepthMaterial({
       depthPacking: THREE.RGBADepthPacking,
     });
 
     return (
       <group ref={ref}>
-        {/* <group>
-          {columns.map((col: number, i: number) =>
-            rows.map((row: number, j: number) => (
-              <mesh position={[col, row, -4]} key={i + j}>
-                <icosahedronGeometry args={[0.333, 8]} />
-                <meshStandardMaterial color="white" />
-              </mesh>
-            )),
-          )}
-        </group> */}
-
         <mesh
           geometry={(nodes.Icosphere as THREE.Mesh).geometry}
           customDepthMaterial={depthMaterial}
