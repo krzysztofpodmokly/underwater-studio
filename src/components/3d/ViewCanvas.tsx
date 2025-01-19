@@ -12,6 +12,7 @@ import {
 import { Perf } from "r3f-perf";
 import { Suspense } from "react";
 import Dispersion from "./Dispersion";
+import Background from "./Background";
 
 const ViewCanvas = () => {
   return (
@@ -37,8 +38,16 @@ const ViewCanvas = () => {
 
       {/* <OrbitControls /> */}
 
-      <Dispersion />
+      <Float
+        speed={1}
+        rotationIntensity={1}
+        floatIntensity={1}
+        floatingRange={[1, 3]}
+      >
+        <Dispersion />
+      </Float>
       <Environment preset="city" />
+      <Background />
 
       {/* <Suspense fallback={null}>
         <View.Port />
