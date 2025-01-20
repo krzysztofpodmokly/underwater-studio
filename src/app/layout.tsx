@@ -5,7 +5,7 @@ import { repositoryName } from "@/prismicio";
 import "./globals.css";
 
 import Header from "@/components/navigation/Header";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer/Footer";
 import ViewCanvas from "@/components/3d/ViewCanvas";
 
 export const metadata: Metadata = {

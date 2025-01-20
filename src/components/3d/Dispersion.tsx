@@ -12,25 +12,25 @@ import fragmentShader from "./shaders/fragment.glsl";
 useGLTF.preload("/models/sphere.glb");
 
 type DispersionModelProps = {
-  name: string;
-  positionFrequency: number;
-  timeFrequency: number;
-  strength: number;
-  warpPositionFrequency: number;
-  warpTimeFrequency: number;
-  warpStrength: number;
+  name?: string;
+  positionFrequency?: number;
+  timeFrequency?: number;
+  strength?: number;
+  warpPositionFrequency?: number;
+  warpTimeFrequency?: number;
+  warpStrength?: number;
 };
 
 const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
   (
     {
-      name,
-      positionFrequency,
-      timeFrequency,
-      strength,
-      warpPositionFrequency,
-      warpTimeFrequency,
-      warpStrength,
+      name = "default",
+      positionFrequency = 0.15,
+      timeFrequency = 0.25,
+      strength = 0.15,
+      warpPositionFrequency = 1.3,
+      warpTimeFrequency = 0.4,
+      warpStrength = 0.6,
     },
     ref,
   ) => {

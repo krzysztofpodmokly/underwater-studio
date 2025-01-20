@@ -10,3 +10,12 @@
   @apply absolute -inset-[10px] -z-10 rounded-xl border border-slate-100/20 bg-slate-200/10 backdrop-blur-md;
   content: "";
 }
+
+.background-gradient {
+  background: radial-gradient(
+    circle at center,
+    hsla(184, 90%, 60%, 0.1) 0%,
+    hsla(184, 0%, 0%, 0) 70%,
+    hsla(184, 0%, 0%, 0) 100%
+  );
+}
