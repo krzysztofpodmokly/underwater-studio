@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = TechStackSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -220,6 +220,88 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *TechStack → Default → Primary → Technologies*
+ */
+export interface TechStackSliceDefaultPrimaryTechnologiesItem {
+  /**
+   * Name field in *TechStack → Default → Primary → Technologies*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.default.primary.technologies[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Color field in *TechStack → Default → Primary → Technologies*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.default.primary.technologies[].color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *TechStack → Default → Primary*
+ */
+export interface TechStackSliceDefaultPrimary {
+  /**
+   * Heading field in *TechStack → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Technologies field in *TechStack → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.default.primary.technologies[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  technologies: prismic.GroupField<
+    Simplify<TechStackSliceDefaultPrimaryTechnologiesItem>
+  >;
+}
+
+/**
+ * Default variation for TechStack Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechStackSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TechStack*
+ */
+type TechStackSliceVariation = TechStackSliceDefault;
+
+/**
+ * TechStack Shared Slice
+ *
+ * - **API ID**: `tech_stack`
+ * - **Description**: TechStack
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSlice = prismic.SharedSlice<
+  "tech_stack",
+  TechStackSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -252,6 +334,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TechStackSlice,
+      TechStackSliceDefaultPrimaryTechnologiesItem,
+      TechStackSliceDefaultPrimary,
+      TechStackSliceVariation,
+      TechStackSliceDefault,
     };
   }
 }
