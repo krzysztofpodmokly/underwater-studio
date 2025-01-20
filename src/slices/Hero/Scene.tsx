@@ -1,10 +1,10 @@
 "use client";
 
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 
 import Dispersion from "@/components/3d/Dispersion";
 import Background from "@/components/3d/Background";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Group } from "three";
 
 import gsap from "gsap";
@@ -13,9 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-type Props = {};
-
-const Scene = (props: Props) => {
+const Scene = () => {
   const bubble1Ref = useRef<Group>(null);
   const bubble2Ref = useRef<Group>(null);
 
@@ -23,8 +21,6 @@ const Scene = (props: Props) => {
   const bubble2GroupRef = useRef<Group>(null);
 
   const groupRef = useRef<Group>(null);
-
-  const test = useRef(0);
 
   const bubbleConfig = {
     positionFrequency: 0.15,
@@ -104,8 +100,6 @@ const Scene = (props: Props) => {
         1.3,
       );
   });
-
-  console.log(test.current);
 
   return (
     <>
