@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={nunito.variable}>
       <body className="relative min-h-screen overflow-x-hidden bg-[#001011] text-white antialiased">
-        <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
+        {/* <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" /> */}
         <main>
           <Header />
           {children}
