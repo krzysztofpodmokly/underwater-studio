@@ -9,8 +9,6 @@ import { useControls, folder } from "leva";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
-useGLTF.preload("/models/sphere.glb");
-
 type DispersionModelProps = {
   name?: string;
   positionFrequency?: number;

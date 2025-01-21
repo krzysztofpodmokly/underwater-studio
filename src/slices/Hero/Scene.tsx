@@ -10,10 +10,13 @@ import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useStore } from "@/hooks/useStore";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Scene = () => {
+  const isReady = useStore((state) => state.isReady);
+
   const bubble1Ref = useRef<Group>(null);
   const bubble2Ref = useRef<Group>(null);
 
@@ -49,6 +52,8 @@ const Scene = () => {
       !groupRef.current
     )
       return;
+
+    isReady(); // make sure that gsap animations are played once 3d models are available
 
     // Set bubble starting location
     gsap.set(bubble1Ref.current.position, { x: -2, y: 2 });

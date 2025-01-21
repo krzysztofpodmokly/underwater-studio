@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
-import "./globals.css";
+import dynamic from "next/dynamic";
 
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/footer/Footer";
 import ViewCanvas from "@/components/3d/ViewCanvas";
+import Loader from "@/components/loader/Loader";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -42,6 +44,7 @@ export default function RootLayout({
           {children}
           <ViewCanvas />
           <Footer />
+          <Loader />
         </main>
       </body>
       <PrismicPreview repositoryName={repositoryName} />

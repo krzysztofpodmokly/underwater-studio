@@ -1,19 +1,17 @@
 "use client";
 
 import { asText, Content } from "@prismicio/client";
-import {
-  PrismicRichText,
-  PrismicText,
-  SliceComponentProps,
-} from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import { View } from "@react-three/drei";
-import Scene from "./Scene";
-import { Bounded } from "@/components/Bounded";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import Button from "@/components/button/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { Bounded } from "@/components/Bounded";
+import Button from "@/components/button/Button";
+import { useStore } from "@/hooks/useStore";
+import Scene from "./Scene";
 
 /**
  * Props for `Hero`.
@@ -26,56 +24,63 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  useGSAP(() => {
-    const introTl = gsap.timeline();
+  const ready = useStore((state) => state.ready);
 
-    introTl
-      .set(".hero", { opacity: 1 })
-      .from(".hero-header", {
-        opacity: 0,
-        scale: 3,
-        ease: "power1.inOut",
-        delay: 0.3,
-      })
-      .from(
-        ".hero-subheading",
-        {
+  useGSAP(
+    () => {
+      if (!ready) return;
+
+      const introTl = gsap.timeline();
+
+      introTl
+        .set(".hero", { opacity: 1 })
+        .from(".hero-header", {
           opacity: 0,
-          y: 30,
+          scale: 3,
+          ease: "power1.inOut",
+          delay: 0.3,
+        })
+        .from(
+          ".hero-subheading",
+          {
+            opacity: 0,
+            y: 30,
+          },
+          "+=.8",
+        )
+        .from(".hero-body", {
+          opacity: 0,
+          y: 10,
+        })
+        .from(".hero-button", {
+          opacity: 0,
+          y: 10,
+          duration: 0.6,
+        });
+
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
         },
-        "+=.8",
-      )
-      .from(".hero-body", {
-        opacity: 0,
-        y: 10,
-      })
-      .from(".hero-button", {
-        opacity: 0,
-        y: 10,
-        duration: 0.6,
       });
 
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1.5,
-      },
-    });
-
-    scrollTl.fromTo(
-      "body",
-      {
-        backgroundColor: "#001011",
-      },
-      {
-        backgroundColor: "#093a3e",
-        overwrite: "auto",
-      },
-      0,
-    );
-  });
+      scrollTl.fromTo(
+        "body",
+        {
+          backgroundColor: "#001011",
+        },
+        {
+          backgroundColor: "#093a3e",
+          overwrite: "auto",
+        },
+        0,
+      );
+    },
+    { dependencies: [ready] },
+  );
 
   return (
     <Bounded
