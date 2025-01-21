@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={nunito.variable}>
-      <body className={`overflow-x-hidden bg-[#001011] text-white antialiased`}>
+      <body className="relative min-h-screen overflow-x-hidden bg-[#001011] text-white antialiased">
         <main>
           <Header />
           {children}
