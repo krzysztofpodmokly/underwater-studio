@@ -216,10 +216,76 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
+type ProjectPageDocumentDataSlicesSlice = TextBlockSlice;
+
+/**
+ * Content for Project Page documents
+ */
+interface ProjectPageDocumentData {
+  /**
+   * Slice Zone field in *Project Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProjectPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Project Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: project_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Project Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: project_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Project Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Project Page document from Prismic
+ *
+ * - **API ID**: `project_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectPageDocumentData>,
+    "project_page",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | HomepageDocument
   | NavigationDocument
-  | ProjectDocument;
+  | ProjectDocument
+  | ProjectPageDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -530,6 +596,9 @@ declare module "@prismicio/client" {
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
+      ProjectPageDocument,
+      ProjectPageDocumentData,
+      ProjectPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,

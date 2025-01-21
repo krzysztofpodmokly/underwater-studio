@@ -5,6 +5,10 @@ import gsap from "gsap";
 import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type Props = {
   projects: Content.ProjectDocument[];
@@ -12,10 +16,15 @@ type Props = {
   buttonText: Content.ProjectsSlice["primary"]["button_text"];
 };
 
-const ProjectsList = ({ projects, fallbackImage, buttonText }: Props) => {
+const ProjectsList = ({
+  projects,
+  fallbackImage,
+  buttonText = "View",
+}: Props) => {
   const ref = useRef(null);
   const revealRef = useRef(null);
   const [currentProject, setCurrentProject] = useState<null | number>(null);
+  const projectsRef = useRef<Array<HTMLLIElement | null>>([]);
   const lastMousePos = useRef({ x: 0, y: 0 });
 
   const handleMouseMove = useCallback(
@@ -46,6 +55,27 @@ const ProjectsList = ({ projects, fallbackImage, buttonText }: Props) => {
     [currentProject],
   );
 
+  useGSAP(() => {
+    projectsRef.current.forEach((project) => {
+      gsap.fromTo(
+        project,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: "elastic.out(1,0.3)",
+          scrollTrigger: {
+            trigger: project,
+            start: "top bottom-=100px",
+            end: "bottom center",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    });
+  });
+
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -63,6 +93,14 @@ const ProjectsList = ({ projects, fallbackImage, buttonText }: Props) => {
       exp: -10,
     });
   });
+
+  useEffect(() => {
+    projectImages.forEach((image) => {
+      if (!image) return;
+      const img = new Image();
+      img.src = image;
+    });
+  }, [projectImages]);
 
   const onMouseEnter = (index: number) => {
     setCurrentProject(index);
@@ -85,6 +123,9 @@ const ProjectsList = ({ projects, fallbackImage, buttonText }: Props) => {
                 key={uid}
                 className="opacity-0f list-item"
                 onMouseEnter={() => onMouseEnter(index)}
+                ref={(el) => {
+                  projectsRef.current[index] = el;
+                }}
               >
                 <Link
                   href={`/project/${uid}`}
