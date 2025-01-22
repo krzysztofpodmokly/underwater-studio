@@ -1,0 +1,26 @@
+{
+  "id": "sub_hero",
+  "type": "SharedSlice",
+  "name": "SubHero",
+  "description": "SubHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "sentence": {
+          "type": "Text",
+          "config": {
+            "label": "Sentence",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

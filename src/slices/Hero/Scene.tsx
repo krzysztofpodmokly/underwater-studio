@@ -1,6 +1,6 @@
 "use client";
 
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 import Dispersion from "@/components/3d/Dispersion";
 import Background from "@/components/3d/Background";
@@ -10,13 +10,10 @@ import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useStore } from "@/hooks/useStore";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Scene = () => {
-  const isReady = useStore((state) => state.isReady);
-
   const bubble1Ref = useRef<Group>(null);
   const bubble2Ref = useRef<Group>(null);
 
@@ -52,8 +49,6 @@ const Scene = () => {
       !groupRef.current
     )
       return;
-
-    isReady(); // make sure that gsap animations are played once 3d models are available
 
     // Set bubble starting location
     gsap.set(bubble1Ref.current.position, { x: -2, y: 2 });
@@ -115,7 +110,7 @@ const Scene = () => {
         <group ref={bubble2GroupRef}>
           <Dispersion name="bubble-2" ref={bubble2Ref} {...bubbleConfig2} />
         </group>
-        {/* <OrbitControls /> */}
+        <OrbitControls />
       </group>
       <Environment preset="city" />
       <Background />

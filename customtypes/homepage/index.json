@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "sub_hero": {
+              "type": "SharedSlice"
+            },
             "projects": {
               "type": "SharedSlice"
             },

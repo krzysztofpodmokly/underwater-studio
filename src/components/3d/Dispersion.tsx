@@ -8,6 +8,7 @@ import { useControls, folder } from "leva";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
+import { useStore } from "@/hooks/useStore";
 
 type DispersionModelProps = {
   name?: string;
@@ -32,6 +33,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
     },
     ref,
   ) => {
+    const isReady = useStore((state) => state.isReady);
     const { nodes } = useGLTF("/models/sphere.glb");
     const mesh =
       useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
@@ -120,6 +122,8 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
 
     useFrame(({ gl, scene, camera, clock }) => {
       if (!mesh.current) return;
+      isReady(); // make sure that gsap animations are played once 3d models are available
+
       const elapsedTime = clock.getElapsedTime();
       // Pass the snapshot texture data to our shader material
 

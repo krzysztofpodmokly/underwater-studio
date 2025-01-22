@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | SubHeroSlice
   | ProjectsSlice
   | TechStackSlice
   | HeroSlice;
@@ -434,6 +435,51 @@ export type ProjectsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SubHero → Default → Primary*
+ */
+export interface SubHeroSliceDefaultPrimary {
+  /**
+   * Sentence field in *SubHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sub_hero.default.primary.sentence
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sentence: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SubHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SubHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SubHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SubHero*
+ */
+type SubHeroSliceVariation = SubHeroSliceDefault;
+
+/**
+ * SubHero Shared Slice
+ *
+ * - **API ID**: `sub_hero`
+ * - **Description**: SubHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SubHeroSlice = prismic.SharedSlice<
+  "sub_hero",
+  SubHeroSliceVariation
+>;
+
+/**
  * Item in *TechStack → Default → Primary → Technologies*
  */
 export interface TechStackSliceDefaultPrimaryTechnologiesItem {
@@ -603,6 +649,10 @@ declare module "@prismicio/client" {
       ProjectsSliceDefaultPrimary,
       ProjectsSliceVariation,
       ProjectsSliceDefault,
+      SubHeroSlice,
+      SubHeroSliceDefaultPrimary,
+      SubHeroSliceVariation,
+      SubHeroSliceDefault,
       TechStackSlice,
       TechStackSliceDefaultPrimaryTechnologiesItem,
       TechStackSliceDefaultPrimary,

@@ -83,7 +83,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   );
 
   return (
-    <Bounded
+    <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="hero opacity-0"
@@ -118,7 +118,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
         </div>
       </div>
-    </Bounded>
+    </section>
   );
 };
 
