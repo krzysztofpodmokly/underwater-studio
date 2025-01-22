@@ -8,7 +8,7 @@ import { Suspense } from "react";
 const ViewCanvas = () => {
   return (
     <Canvas
-      // camera={{ position: [-3, 0, 6] }}
+      camera={{ fov: 30 }}
       dpr={[1, 1.5]}
       style={{
         position: "fixed",
@@ -23,7 +23,7 @@ const ViewCanvas = () => {
       gl={{
         antialias: true,
       }}
-      shadows
+      // shadows
     >
       {/* <Perf position="top-left" /> */}
 
