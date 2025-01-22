@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 // #97c8eb
 // #fe9000
 
-const nunito = localFont({
-  src: "../../public/fonts/Nunito.ttf",
+const merriweather = localFont({
+  src: "../../public/fonts/Merriweather-Light.ttf",
   weight: "100 900",
   display: "swap",
-  variable: "--font-nunito",
+  variable: "--font-merriweather",
 });
 
 export default function RootLayout({
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nunito.variable}>
+    <html lang="en" className={merriweather.variable}>
       <body className="overflow-x-hidden bg-[#000] antialiased">
         {/* <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" /> */}
         <main>

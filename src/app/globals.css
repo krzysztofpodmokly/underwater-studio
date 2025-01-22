@@ -6,7 +6,8 @@
   position: relative;
 }
 
-.glass-conainter::before {
+/*  glass-container mt-16 grid w-fit */
+.glass-container::before {
   @apply absolute -inset-[10px] -z-10 rounded-xl border border-slate-100/20 bg-slate-200/10 backdrop-blur-md;
   content: "";
 }

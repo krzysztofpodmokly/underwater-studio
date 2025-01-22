@@ -51,7 +51,7 @@ const Scene = () => {
   useGSAP(() => {
     if (
       !bubble1Ref.current ||
-      // !bubble2Ref.current ||
+      !bubble1GroupRef.current ||
       // !bubble3Ref.current ||
       !wordsGroupRef.current ||
       !word1Ref.current ||
@@ -64,6 +64,8 @@ const Scene = () => {
 
     gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
     gsap.set(bubble1Ref.current.scale, { x: 0, y: 0, z: 0 });
+    gsap.set(bubble1GroupRef.current.scale, { x: 0, y: 0, z: 0 });
+
     // gsap.set(bubble3Ref.current.position, { x: -5, y: 0, z: 0 });
 
     gsap.set(word1Ref.current.position, { x: 10, y: 3, z: -10 });
@@ -71,20 +73,18 @@ const Scene = () => {
     gsap.set(word3Ref.current.position, { x: -2, y: -6, z: -10 });
     gsap.set(word4Ref.current.position, { x: 2.2, y: 0, z: -2 });
 
-    // gsap.set(word1Ref.current.position, { x: 2, y: 1.6, z: -7 });
-    // gsap.set(word2Ref.current.position, { x: 1, y: -1.3, z: -4 });
-    // gsap.set(word3Ref.current.position, { x: -2, y: 1, z: -4 });
-    // gsap.set(word4Ref.current.position, { x: -1.6, y: -1.7, z: -5 });
-
     const introTl = gsap.timeline({
       defaults: {
-        duration: 3,
+        duration: 4,
         ease: "back.out(1.5)",
       },
     });
 
-    // introTl
-    //   .from(bubble1Ref.current.scale, { x: 0, y: 0, z: 0 }, 0)
+    introTl.to(bubble1GroupRef.current.scale, {
+      x: 1,
+      y: 1,
+      z: 1,
+    });
     //   .to(word1Ref.current.position, { x: -1, y: 2 }, 0);
     // .from(word1Ref.current.rotation, { z: 1 }, 0)
     // .from(word2Ref.current.position, { x: -2, y: 3 }, 0)
@@ -187,9 +187,11 @@ const Scene = () => {
 
   return (
     <>
-      <Dispersion ref={bubble1Ref} />
-      {/* <Dispersion ref={bubble2Ref} />
-      <Dispersion ref={bubble3Ref} /> */}
+      <group ref={bubble1GroupRef}>
+        <Dispersion ref={bubble1Ref} />
+      </group>
+      {/* <Dispersion ref={bubble2Ref} /> */}
+      {/* <Dispersion ref={bubble3Ref} /> */}
 
       {/* <group ref={groupRef}>
         <group ref={bubble1GroupRef}>
