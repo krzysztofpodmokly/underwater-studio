@@ -97,26 +97,56 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             {/* <h1 className="hero-header text-5xl font-black uppercase leading-[.8] text-slate-300 md:text-[4rem] lg:text-[6rem]">
               {asText(slice.primary.heading)}
             </h1> */}
-            <div className="hero-subheading mt-12 text-3xl font-semibold text-slate-400 lg:text-4xl">
+            {/* <div className="hero-subheading mt-12 text-3xl font-semibold text-slate-400 lg:text-4xl">
               <PrismicRichText field={slice.primary.subheading} />
-            </div>
-            <div className="hero-body text-balance text-2xl font-normal text-slate-500">
+            </div> */}
+            {/* <div className="hero-body text-balance text-2xl font-normal text-slate-500">
               <PrismicRichText field={slice.primary.body} />
-            </div>
-            <Button
+            </div> */}
+            {/* <Button
               buttonLink={slice.primary.button_link}
               buttonText={slice.primary.button_text}
               className="hero-button mt-12"
-            />
+            /> */}
           </div>
         </div>
-        <div className="relative grid h-screen items-center gap-4 md:grid-cols-2">
-          <PrismicNextImage
-            field={slice.primary.bubble_image}
-            className="w-full md:hidden"
-            alt=""
-          />
-        </div>
+        <div className="h-screen"></div>
+        <Bounded>
+          <div className="grid h-screen items-center gap-4 md:grid-cols-2">
+            <PrismicNextImage
+              field={slice.primary.bubble_image}
+              className="w-full md:hidden"
+              alt=""
+            />
+            <div className="glass-container mt-16 grid w-fit">
+              <h2 className="text-side-heading text-balance text-6xl font-black uppercase text-sky-950 lg:text-8xl">
+                Some title
+              </h2>
+              <div className="text-side-body mt-4 max-w-xl text-balance text-xl font-normal text-sky-950">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                pellentesque, nisl sit amet finibus pellentesque, sem orci
+                luctus ante, vel mollis justo turpis ac nulla. Ut aliquam felis
+                vel felis dictum, non commodo dolor auctor. Pellentesque vitae
+                lectus sit amet tellus faucibus semper tincidunt sed ex. Duis
+                purus leo, aliquam ac venenatis eu, sagittis ut turpis. Aliquam
+                vitae semper massa. Praesent imperdiet placerat ante, vitae
+                cursus quam accumsan sit amet. Nam nec finibus magna. Sed eget
+                nunc in lectus sollicitudin porta. Aenean quis lacus et mi
+                molestie auctor et ut nisl. Aliquam vestibulum dolor id cursus
+                imperdiet. Integer quis libero nulla. Etiam posuere, lectus sit
+                amet viverra vulputate, ligula sapien ullamcorper dolor, at
+                dictum urna neque quis erat. Praesent venenatis sapien sed
+                consectetur rhoncus. Integer sit amet ligula tortor. Ut sit amet
+                sagittis elit, eget ultricies purus. Donec eu urna non sem
+                pellentesque tempus ac a eros. Vivamus luctus diam vitae
+                facilisis dignissim. Aenean interdum, justo sit amet sagittis
+                ultrices, magna ipsum porta purus, tristique finibus metus
+                libero ac ipsum. Pellentesque in sapien libero. Suspendisse
+                condimentum facilisis ligula, et luctus nisl ullamcorper vitae.
+              </div>
+            </div>
+          </div>
+        </Bounded>
       </div>
     </section>
   );

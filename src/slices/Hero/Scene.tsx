@@ -42,10 +42,18 @@ const Scene = () => {
   };
 
   useGSAP(() => {
-    if (!bubble1Ref.current || !bubble1GroupRef.current) return;
+    if (
+      !bubble1Ref.current ||
+      !bubble2Ref.current ||
+      !bubble1GroupRef.current ||
+      !bubble2GroupRef.current
+    )
+      return;
 
     gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
-    gsap.set(bubble1Ref.current.scale, { x: 0, y: 0, z: 0 });
+    gsap.set(bubble2Ref.current.position, { x: -1, y: -5, z: -5 });
+    gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
+    gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
 
     const introTl = gsap.timeline({
       defaults: {
@@ -54,15 +62,16 @@ const Scene = () => {
       },
     });
 
-    introTl.to(bubble1Ref.current.scale, {
-      x: 1.5,
-      y: 1.5,
-      z: 1.5,
+    introTl.from(bubble1GroupRef.current.scale, {
+      x: 0,
+      y: 0,
+      z: 0,
     });
 
     const scrollTl = gsap.timeline({
       defaults: {
         duration: 2,
+        // ease: "back.inOut(3)",
       },
       scrollTrigger: {
         trigger: ".hero",
@@ -72,13 +81,20 @@ const Scene = () => {
       },
     });
 
-    scrollTl.to(bubble1Ref.current.scale, { x: 2, y: 2, z: 2 });
+    scrollTl
+      .to(bubble1Ref.current.scale, { x: 0.3, y: 0.3, z: 0.3 }, 1.3)
+      .to(bubble1Ref.current.position, { x: 0.8, y: -0.3, z: 0 }, "<")
+      .to(bubble2Ref.current.position, { x: 0, y: 0, z: 0 }, "<")
+      .to(bubble2Ref.current.scale, { x: 2, y: 2, z: 2 }, "<");
   });
 
   return (
     <>
       <group ref={bubble1GroupRef}>
-        <Dispersion ref={bubble1Ref} />
+        <Dispersion ref={bubble1Ref} {...bubbleConfig} />
+      </group>
+      <group ref={bubble2GroupRef}>
+        <Dispersion ref={bubble2Ref} {...bubbleConfig2} />
       </group>
 
       <Text3d />
