@@ -1,131 +1,69 @@
-"use client";
-
-import Dispersion from "@/components/3d/Dispersion";
-import { OrbitControls, Sparkles, Text } from "@react-three/drei";
-import { useRef } from "react";
+import {
+  Environment,
+  Float,
+  MeshTransmissionMaterial,
+} from "@react-three/drei";
 import * as THREE from "three";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Background from "@/components/3d/Background";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { useControls } from "leva";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-type Props = {
-  sentence: string | null;
-};
-
-const Scene = ({ sentence }: Props) => {
+const Scene = () => {
   const groupRef = useRef<THREE.Group>(null);
-  const bubbleRef = useRef<THREE.Group>(null);
-  const sparkles1Ref = useRef<THREE.Points>(null);
-  const sparkles2Ref = useRef<THREE.Points>(null);
-  const sparklesRef = useRef<THREE.Group>(null);
-  const wordsRef = useRef<THREE.Group>(null);
 
-  const ANGLE = 90 * (Math.PI / 180);
-
-  const getXPosition = (distance: number) => distance * Math.cos(ANGLE);
-  const getYPosition = (distance: number) => distance * Math.sin(ANGLE);
-  const getXYPositions = (distance: number) => ({
-    x: getXPosition(distance),
-    y: getYPosition(-1 * distance),
+  useFrame((_, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 1 * delta;
+      groupRef.current.rotation.z += 0.5 * delta;
+    }
   });
 
-  useGSAP(() => {
-    if (
-      !bubbleRef.current ||
-      !groupRef.current ||
-      !sparkles1Ref.current ||
-      !sparkles2Ref.current ||
-      !sparklesRef.current ||
-      !wordsRef.current
-    )
-      return;
-
-    gsap.set(sparklesRef.current.position, { z: -5 });
-    gsap.set(bubbleRef.current.position, { ...getXYPositions(-4) });
-    gsap.set(
-      wordsRef.current.children.map((word) => word.position),
-      { ...getXYPositions(7), z: 2 },
-    );
-
-    // Infinite sparkles movement
-    const DISTANCE = 15;
-    const DURATION = 6;
-    gsap.set([sparkles1Ref.current.position, sparkles2Ref.current.position], {
-      ...getXYPositions(DISTANCE),
-    });
-
-    gsap.to(sparkles1Ref.current.position, {
-      y: `+=${getYPosition(DISTANCE * 2)}`,
-      x: `+=${getXPosition(DISTANCE * -2)}`,
-      ease: "none",
-      repeat: -1,
-      duration: DURATION,
-    });
-    gsap.to(sparkles2Ref.current.position, {
-      y: `+=${getYPosition(DISTANCE * 2)}`,
-      x: `+=${getXPosition(DISTANCE * -2)}`,
-      ease: "none",
-      repeat: -1,
-      delay: DURATION / 2,
-      duration: DURATION,
-    });
+  const config = useControls({
+    transmisionSampler: true,
+    backside: true,
+    samples: { value: 10, min: 1, max: 32, step: 1 },
+    resolution: { value: 2048, min: 256, max: 2048, step: 256 },
+    transmission: { value: 1, min: 0, max: 1 },
+    roughness: { value: 0.1, min: 0, max: 1, step: 0.01 },
+    thickness: { value: 2.75, min: 0, max: 10, step: 0.01 },
+    ior: { value: 1.85, min: 1, max: 5, step: 0.01 },
+    chromaticAberration: { value: 0.36, min: 0, max: 1 },
+    anisotropy: { value: 0.1, min: 0, max: 1, step: 0.01 },
+    distortion: { value: 0.2, min: 0, max: 1, step: 0.01 },
+    distortionScale: { value: 0.92, min: 0.01, max: 1, step: 0.01 },
+    temporalDistortion: { value: 0.21, min: 0, max: 1, step: 0.01 },
+    clearcoat: { value: 0.01, min: 0, max: 1 },
+    attenuationDistance: { value: 1, min: 0, max: 10, step: 0.01 },
+    // attenuationColor: "#fff",
+    // color: "#fff",
   });
 
   return (
-    <group ref={groupRef}>
-      <Dispersion ref={bubbleRef} />
+    <Float speed={5} rotationIntensity={1} floatIntensity={2}>
+      <group>
+        <mesh>
+          <sphereGeometry args={[1, 64, 64]} />
+          <MeshTransmissionMaterial {...config} />
+        </mesh>
 
-      <group ref={sparklesRef}>
-        <Sparkles
-          count={100}
-          size={10}
-          ref={sparkles1Ref}
-          scale={[20, 20, 20]}
-          rotation={[0, 0, Math.PI / -4]}
-        />
-        <Sparkles
-          count={100}
-          size={10}
-          ref={sparkles2Ref}
-          scale={[20, 20, 20]}
-          rotation={[0, 0, Math.PI / -4]}
-          color="red"
-        />
+        <group ref={groupRef}>
+          <Environment preset="city" />
+          <mesh position={[0, 0, 0.25]}>
+            <sphereGeometry args={[0.2, 32, 32]} />
+            <meshStandardMaterial color="#001011" />
+          </mesh>
+          <mesh position={[-0.2, 0, -0.12]}>
+            <sphereGeometry args={[0.2, 32, 32]} />
+            <meshStandardMaterial color="#fe9000" />
+          </mesh>
+          <mesh position={[0.2, 0, -0.12]}>
+            <sphereGeometry args={[0.2, 32, 32]} />
+            <meshStandardMaterial color="#97c8eb" />
+          </mesh>
+        </group>
       </group>
-
-      <group ref={wordsRef}>
-        {sentence && <ThreeText sentence={sentence} />}
-      </group>
-
-      {/* <OrbitControls /> */}
-    </group>
+    </Float>
   );
 };
 
 export default Scene;
-
-const ThreeText = ({
-  sentence,
-  color,
-}: {
-  sentence: string;
-  color?: string;
-}) => {
-  const words = sentence.toUpperCase().split(" ");
-  const material = new THREE.MeshLambertMaterial();
-  return words.map((word, index) => (
-    <Text
-      key={`${word}-${index}`}
-      material={material}
-      color={color}
-      anchorX="center"
-      anchorY="middle"
-      characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!,.?"
-    >
-      {word}
-    </Text>
-  ));
-};

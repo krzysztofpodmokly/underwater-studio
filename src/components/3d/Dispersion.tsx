@@ -194,7 +194,6 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
           geometry={(nodes.Icosphere as THREE.Mesh).geometry}
           customDepthMaterial={depthMaterial}
           ref={mesh}
-          receiveShadow
         >
           <shaderMaterial
             vertexShader={vertexShader}

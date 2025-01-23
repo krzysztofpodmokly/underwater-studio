@@ -4,8 +4,8 @@ import { forwardRef } from "react";
 import * as THREE from "three";
 
 const Background = forwardRef<THREE.Group>((_, ref) => {
-  const columns = range(-13, 13, 1.5);
-  const rows = range(-13, 13, 1.5);
+  const columns = range(-5, 5, 1.5);
+  const rows = range(-5, 5, 1.5);
 
   return (
     <group ref={ref}>
