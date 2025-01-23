@@ -5,6 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Text3d = () => {
@@ -74,15 +77,15 @@ const Text3d = () => {
     const R2FinalPos = { x: -0.629, y: 0.061, z: -0.027 };
     const studioFinalPos = { x: -0.322, y: -0.717, z: -0.027 };
 
-    gsap.set(URef.current.position, { x: 3, y: 5.5, z: -4 });
-    gsap.set(NRef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(DRef.current.position, { x: 1, y: 1, z: -2 });
+    gsap.set(URef.current.position, { x: 5, y: 5, z: -4 });
+    gsap.set(NRef.current.position, { x: -3.2, y: -3, z: 0 });
+    gsap.set(DRef.current.position, { x: -4, y: 1, z: 10 });
     gsap.set(ERef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(RRef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(WRef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(ARef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(TRef.current.position, { x: 1, y: 1, z: -2 });
-    gsap.set(E2Ref.current.position, { x: 1, y: 1, z: -2 });
+    gsap.set(RRef.current.position, { x: 2.1, y: -5, z: -6 });
+    gsap.set(WRef.current.position, { x: 1, y: 4, z: 5 });
+    gsap.set(ARef.current.position, { x: -3, y: 1, z: -5 });
+    gsap.set(TRef.current.position, { x: -3, y: -3, z: -3 });
+    gsap.set(E2Ref.current.position, { x: 1, y: 2, z: -5 });
     gsap.set(R2Ref.current.position, { x: 1, y: 1, z: -2 });
     gsap.set(studioRef.current.position, { x: 2, y: 1 });
 
@@ -138,11 +141,14 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text as THREE.Mesh).geometry}
-          // position={[2.38, 0.061, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={RRef}
         >
-          <meshStandardMaterial color="red" />
+          <meshStandardMaterial />
+          {/* <shaderMaterial
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+          /> */}
         </mesh>
       </group>
       <group ref={studioGroupRef}>
@@ -150,11 +156,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text006 as THREE.Mesh).geometry}
-          // position={[-0.322, -0.717, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={studioRef}
         >
-          <meshStandardMaterial color="blue" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={EGroupRef}>
@@ -162,11 +167,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text007 as THREE.Mesh).geometry}
-          // position={[1.842, 0.063, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={ERef}
         >
-          <meshStandardMaterial color="green" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={TGroupRef}>
@@ -174,11 +178,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text008 as THREE.Mesh).geometry}
-          // position={[1.297, 0.115, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={TRef}
         >
-          <meshStandardMaterial color="purple" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={AGroupRef}>
@@ -186,11 +189,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text009 as THREE.Mesh).geometry}
-          // position={[0.728, 0.014, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={ARef}
         >
-          <meshStandardMaterial color="orange" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={WGroupRef}>
@@ -198,11 +200,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text010 as THREE.Mesh).geometry}
-          // position={[0.068, 0.103, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={WRef}
         >
-          <meshStandardMaterial color="pink" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={R2GroupRef}>
@@ -210,11 +211,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text011 as THREE.Mesh).geometry}
-          // position={[-0.629, 0.061, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={R2Ref}
         >
-          <meshStandardMaterial color="cyan" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={E2GroupRef}>
@@ -222,11 +222,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text012 as THREE.Mesh).geometry}
-          // position={[-1.167, 0.063, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={E2Ref}
         >
-          <meshStandardMaterial color="magenta" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={DGroupRef}>
@@ -234,11 +233,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text013 as THREE.Mesh).geometry}
-          // position={[-1.737, 0.069, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={DRef}
         >
-          <meshStandardMaterial color="brown" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={NGroupRef}>
@@ -246,11 +244,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text014 as THREE.Mesh).geometry}
-          // position={[-2.34, 0.076, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={NRef}
         >
-          <meshStandardMaterial color="teal" />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <group ref={UGroupRef}>
@@ -258,11 +255,10 @@ const Text3d = () => {
           castShadow
           receiveShadow
           geometry={(nodes.Text015 as THREE.Mesh).geometry}
-          // position={[-2.941, 0.092, -0.027]}
           rotation={[Math.PI / 2, 0, 0]}
           ref={URef}
         >
-          <meshStandardMaterial color="yellow" />
+          <meshStandardMaterial />
         </mesh>
       </group>
     </group>
