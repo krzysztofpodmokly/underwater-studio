@@ -27,7 +27,7 @@ const Footer = async (props: Props) => {
       className="relative h-screen flex-col items-center bg-[#001011] text-white"
     >
       <div className="background-gradient absolute inset-0 z-50 max-h-screen" />
-      <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/pattern_83.jpg')] opacity-20 mix-blend-soft-light" />
+      <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
 
       <div className="z-[51] flex h-full flex-col items-center justify-center">
         <div className="mb-10 flex gap-10">

@@ -31,7 +31,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       if (!ready) return;
 
       const introTl = gsap.timeline();
-      // gsap.set("body", { backgroundColor: "#fff" });
 
       introTl
         .set(".hero", { opacity: 1 })
@@ -119,31 +118,15 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               className="w-full md:hidden"
               alt=""
             />
-            <div className="glass-container mt-16 grid w-fit">
-              <h2 className="text-side-heading text-balance text-6xl font-black uppercase text-sky-950 lg:text-8xl">
+            <div className="glass-container mt-16 grid w-fit text-white">
+              <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2>
-              <div className="text-side-body mt-4 max-w-xl text-balance text-xl font-normal text-sky-950">
+              <div className="text-side-body mt-4 max-w-xl text-balance text-xl font-normal">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 pellentesque, nisl sit amet finibus pellentesque, sem orci
                 luctus ante, vel mollis justo turpis ac nulla. Ut aliquam felis
-                vel felis dictum, non commodo dolor auctor. Pellentesque vitae
-                lectus sit amet tellus faucibus semper tincidunt sed ex. Duis
-                purus leo, aliquam ac venenatis eu, sagittis ut turpis. Aliquam
-                vitae semper massa. Praesent imperdiet placerat ante, vitae
-                cursus quam accumsan sit amet. Nam nec finibus magna. Sed eget
-                nunc in lectus sollicitudin porta. Aenean quis lacus et mi
-                molestie auctor et ut nisl. Aliquam vestibulum dolor id cursus
-                imperdiet. Integer quis libero nulla. Etiam posuere, lectus sit
-                amet viverra vulputate, ligula sapien ullamcorper dolor, at
-                dictum urna neque quis erat. Praesent venenatis sapien sed
-                consectetur rhoncus. Integer sit amet ligula tortor. Ut sit amet
-                sagittis elit, eget ultricies purus. Donec eu urna non sem
-                pellentesque tempus ac a eros. Vivamus luctus diam vitae
-                facilisis dignissim. Aenean interdum, justo sit amet sagittis
-                ultrices, magna ipsum porta purus, tristique finibus metus
-                libero ac ipsum. Pellentesque in sapien libero. Suspendisse
-                condimentum facilisis ligula, et luctus nisl ullamcorper vitae.
+                vel felis dictum, non commodo dolor auctor.
               </div>
             </div>
           </div>

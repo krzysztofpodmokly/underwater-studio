@@ -55,18 +55,20 @@ const Scene = () => {
     gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
     gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
 
-    const introTl = gsap.timeline({
-      defaults: {
-        duration: 4,
-        ease: "back.out(1.5)",
-      },
-    });
+    if (window.scrollY < 20) {
+      const introTl = gsap.timeline({
+        defaults: {
+          duration: 4,
+          ease: "back.out(1.5)",
+        },
+      });
 
-    introTl.from(bubble1GroupRef.current.scale, {
-      x: 0,
-      y: 0,
-      z: 0,
-    });
+      introTl.from(bubble1GroupRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+      });
+    }
 
     const scrollTl = gsap.timeline({
       defaults: {

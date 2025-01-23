@@ -96,25 +96,27 @@ const Text3d = () => {
     gsap.set(studioRef.current.scale, { x: 0.7, y: 0.7, z: 0.7 });
     gsap.set(containerRef.current.rotation, { x: 0, y: 0, z: 0 });
 
-    const introTl = gsap.timeline({
-      defaults: {
-        duration: 2,
-        ease: "power2.inOut(2.5)",
-      },
-    });
-    introTl
-      .from(UGroupRef.current.position, { x: -1.5, y: -1.3, z: -5 })
-      .from(NGroupRef.current.position, { x: 1, y: -2, z: -3 }, 0)
-      .from(DGroupRef.current.position, { x: 2, y: 2, z: -2 }, 0)
-      .from(EGroupRef.current.position, { x: 2.3, y: 0.2, z: -2 }, 0)
-      .from(RGroupRef.current.position, { x: -1, y: 2 }, 0)
-      .from(WGroupRef.current.position, { x: -0.1, y: -0.3, z: -4 }, 0)
-      .from(AGroupRef.current.position, { x: 0.9, y: 0.6, z: -4 }, 0)
-      .from(TGroupRef.current.position, { x: 1.1, y: -0.6, z: -6 }, 0)
-      .from(E2GroupRef.current.position, { x: -0.9, y: 0.6, z: -3 }, 0)
-      .from(R2GroupRef.current.position, { x: -1.3, y: -0.4, z: -3 }, 0)
-      .from(studioGroupRef.current.position, { x: 0, y: -1, z: -10 }, 0)
-      .to(lettersRef.current.rotation, { x: 0, y: 0, z: 0 }, 0);
+    if (window.scrollY < 20) {
+      const introTl = gsap.timeline({
+        defaults: {
+          duration: 2,
+          ease: "power2.inOut(2.5)",
+        },
+      });
+      introTl
+        .from(UGroupRef.current.position, { x: -1.5, y: -1.3, z: -5 })
+        .from(NGroupRef.current.position, { x: 1, y: -2, z: -3 }, 0)
+        .from(DGroupRef.current.position, { x: 2, y: 2, z: -2 }, 0)
+        .from(EGroupRef.current.position, { x: 2.3, y: 0.2, z: -2 }, 0)
+        .from(RGroupRef.current.position, { x: -1, y: 2 }, 0)
+        .from(WGroupRef.current.position, { x: -0.1, y: -0.3, z: -4 }, 0)
+        .from(AGroupRef.current.position, { x: 0.9, y: 0.6, z: -4 }, 0)
+        .from(TGroupRef.current.position, { x: 1.1, y: -0.6, z: -6 }, 0)
+        .from(E2GroupRef.current.position, { x: -0.9, y: 0.6, z: -3 }, 0)
+        .from(R2GroupRef.current.position, { x: -1.3, y: -0.4, z: -3 }, 0)
+        .from(studioGroupRef.current.position, { x: 0, y: -1, z: -10 }, 0)
+        .to(lettersRef.current.rotation, { x: 0, y: 0, z: 0 }, 0);
+    }
 
     const scrollTl = gsap.timeline({
       defaults: {
