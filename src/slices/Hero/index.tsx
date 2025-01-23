@@ -31,6 +31,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       if (!ready) return;
 
       const introTl = gsap.timeline();
+      // gsap.set("body", { backgroundColor: "#fff" });
 
       introTl
         .set(".hero", { opacity: 1 })
@@ -76,7 +77,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           backgroundColor: "#093a3e",
           overwrite: "auto",
         },
-        0,
+        1,
       );
     },
     { dependencies: [ready] },
