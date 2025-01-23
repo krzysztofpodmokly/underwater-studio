@@ -54,7 +54,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero mb-96 mt-72 h-screen"
+      className="sub-hero relative mb-96 mt-72 h-screen"
       centered
     >
       <Heading
@@ -67,12 +67,12 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
         Some random description
       </div>
 
-      <div className="mt-16 grid max-w-4xl grid-rows-[auto,auto,auto] gap-8 md:grid-cols-3 md:gap-10">
+      <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-8 md:grid-cols-3 md:gap-14">
         {bentoBox.map((box) => (
           <div
             key={box.title}
             className={clsx(
-              "glass-container relative row-span-3 grid grid-rows-subgrid gap-4 rounded-lg bg-gradient-to-b from-teal-950 to-teal-900 p-4",
+              "glass-container relative row-span-3 grid grid-rows-subgrid gap-6 rounded-lg bg-gradient-to-b from-teal-950 to-teal-900 p-4",
               box.wide ? "md:col-span-2" : "md:col-span-1",
             )}
           >
@@ -83,12 +83,9 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
           </div>
         ))}
       </div>
-
-      <div>
-        <View className="pointer-events-none sticky hidden h-[50vh] w-screen md:block">
-          <Scene />
-        </View>
-      </div>
+      <View className="pointer-events-none absolute top-60 -z-[100] hidden h-screen w-screen md:block">
+        <Scene />
+      </View>
     </Bounded>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import Dispersion from "@/components/3d/Dispersion";
+import Dispersion from "@/components/3d/disperion/Dispersion";
 import { View } from "@react-three/drei";
 
 type Props = {};

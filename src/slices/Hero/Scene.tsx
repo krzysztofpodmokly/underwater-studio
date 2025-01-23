@@ -2,7 +2,7 @@
 
 import { Environment, OrbitControls } from "@react-three/drei";
 
-import Dispersion from "@/components/3d/Dispersion";
+import Dispersion from "@/components/3d/disperion/Dispersion";
 import Background from "@/components/3d/Background";
 import { useRef } from "react";
 import { Group, Mesh } from "three";

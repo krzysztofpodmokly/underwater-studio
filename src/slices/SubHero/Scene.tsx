@@ -7,62 +7,50 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { useControls } from "leva";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Distorted from "@/components/3d/distorted/Distorted";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Scene = () => {
-  const groupRef = useRef<THREE.Group>(null);
+  const group1Ref = useRef<THREE.Group>(null);
+  const group2Ref = useRef<THREE.Group>(null);
 
-  useFrame((_, delta) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 1 * delta;
-      groupRef.current.rotation.z += 0.5 * delta;
-    }
-  });
+  useGSAP(() => {
+    if (!group1Ref.current || !group2Ref.current) return;
 
-  const config = useControls({
-    transmisionSampler: true,
-    backside: true,
-    samples: { value: 10, min: 1, max: 32, step: 1 },
-    resolution: { value: 2048, min: 256, max: 2048, step: 256 },
-    transmission: { value: 1, min: 0, max: 1 },
-    roughness: { value: 0.1, min: 0, max: 1, step: 0.01 },
-    thickness: { value: 2.75, min: 0, max: 10, step: 0.01 },
-    ior: { value: 1.85, min: 1, max: 5, step: 0.01 },
-    chromaticAberration: { value: 0.36, min: 0, max: 1 },
-    anisotropy: { value: 0.1, min: 0, max: 1, step: 0.01 },
-    distortion: { value: 0.2, min: 0, max: 1, step: 0.01 },
-    distortionScale: { value: 0.92, min: 0.01, max: 1, step: 0.01 },
-    temporalDistortion: { value: 0.21, min: 0, max: 1, step: 0.01 },
-    clearcoat: { value: 0.01, min: 0, max: 1 },
-    attenuationDistance: { value: 1, min: 0, max: 10, step: 0.01 },
-    // attenuationColor: "#fff",
-    // color: "#fff",
+    gsap.set(group1Ref.current.position, { x: -2 });
+    gsap.set(group2Ref.current.position, { x: 2 });
+    gsap.set(group1Ref.current.scale, { x: 0.3, y: 0.3, z: 0.3 });
+    gsap.set(group2Ref.current.scale, { x: 0.5, y: 0.5, z: 0.5 });
+
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sub-hero",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 4,
+      },
+    });
+
+    scrollTl
+      // .to(group1Ref.current.position, { x: -1 }, 2)
+      .to(group1Ref.current.scale, { x: 1.1, y: 1.1, z: 1.1 })
+      .to(group2Ref.current.scale, { x: 1, y: 1, z: 1 }, "-=0.3");
   });
 
   return (
-    <Float speed={5} rotationIntensity={1} floatIntensity={2}>
-      <group>
-        <mesh>
-          <sphereGeometry args={[1, 64, 64]} />
-          <MeshTransmissionMaterial {...config} />
-        </mesh>
-
-        <group ref={groupRef}>
-          <Environment preset="city" />
-          <mesh position={[0, 0, 0.25]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
-            <meshStandardMaterial color="#001011" />
-          </mesh>
-          <mesh position={[-0.2, 0, -0.12]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
-            <meshStandardMaterial color="#fe9000" />
-          </mesh>
-          <mesh position={[0.2, 0, -0.12]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
-            <meshStandardMaterial color="#97c8eb" />
-          </mesh>
-        </group>
+    <group>
+      <group ref={group1Ref}>
+        <Distorted />
       </group>
-    </Float>
+      <group ref={group2Ref}>
+        <Distorted />
+      </group>
+    </group>
   );
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import Dispersion from "@/components/3d/Dispersion";
+import Dispersion from "@/components/3d/disperion/Dispersion";
 import { OrbitControls, Sparkles, Text } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
