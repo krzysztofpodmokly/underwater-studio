@@ -13,6 +13,7 @@ import Logo from "@/components/logo/Logo";
 import { PrismicNextLink } from "@prismicio/next";
 import { View } from "@react-three/drei";
 import Bubble from "./3d/Bubble";
+import React from "react";
 
 type Props = {};
 
@@ -61,8 +62,8 @@ const Footer = async (props: Props) => {
           <div className="navigation" aria-label="Footer Navigation">
             <ul className="flex items-center gap-1">
               {navigation.data.items.map(({ link, label }, index) => (
-                <>
-                  <li key={label}>
+                <React.Fragment key={label}>
+                  <li>
                     <PrismicNextLink
                       field={link}
                       className="transition-colors duration-150 hover:text-[#97c8eb]"
@@ -75,7 +76,7 @@ const Footer = async (props: Props) => {
                       |
                     </span>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </ul>
           </div>

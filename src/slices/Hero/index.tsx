@@ -94,9 +94,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       <div className="relative z-[100] grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">
-            <h1 className="hero-header text-5xl font-black uppercase leading-[.8] text-slate-300 md:text-[4rem] lg:text-[6rem]">
+            {/* <h1 className="hero-header text-5xl font-black uppercase leading-[.8] text-slate-300 md:text-[4rem] lg:text-[6rem]">
               {asText(slice.primary.heading)}
-            </h1>
+            </h1> */}
             <div className="hero-subheading mt-12 text-3xl font-semibold text-slate-400 lg:text-4xl">
               <PrismicRichText field={slice.primary.subheading} />
             </div>

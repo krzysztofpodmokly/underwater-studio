@@ -117,10 +117,9 @@ const ProjectsList = ({
         onMouseLeave={onMouseLeave}
       >
         {projects.map(({ uid, data, tags }, index) => (
-          <>
+          <React.Fragment key={uid}>
             {isFilled.keyText(data.title) && (
               <li
-                key={uid}
                 className="opacity-0f list-item"
                 onMouseEnter={() => onMouseEnter(index)}
                 ref={(el) => {
@@ -146,7 +145,7 @@ const ProjectsList = ({
                 </Link>
               </li>
             )}
-          </>
+          </React.Fragment>
         ))}
       </ul>
 

@@ -10,6 +10,7 @@ import { Group, Mesh } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Text3d from "./Text3d";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -51,27 +52,27 @@ const Scene = () => {
   useGSAP(() => {
     if (
       !bubble1Ref.current ||
-      !bubble1GroupRef.current ||
+      !bubble1GroupRef.current
       // !bubble3Ref.current ||
-      !wordsGroupRef.current ||
-      !word1Ref.current ||
-      !word2Ref.current ||
-      !word3Ref.current ||
-      !word4Ref.current ||
-      !wordGroup1Ref.current
+      // !wordsGroupRef.current ||
+      // !word1Ref.current ||
+      // !word2Ref.current ||
+      // !word3Ref.current ||
+      // !word4Ref.current ||
+      // !wordGroup1Ref.current
     )
       return;
 
     gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
     gsap.set(bubble1Ref.current.scale, { x: 0, y: 0, z: 0 });
-    gsap.set(bubble1GroupRef.current.scale, { x: 0, y: 0, z: 0 });
+    // gsap.set(bubble1GroupRef.current.scale, { x: 0, y: 0, z: 0 });
 
     // gsap.set(bubble3Ref.current.position, { x: -5, y: 0, z: 0 });
 
-    gsap.set(word1Ref.current.position, { x: 10, y: 3, z: -10 });
-    gsap.set(word2Ref.current.position, { x: -2, z: -2 });
-    gsap.set(word3Ref.current.position, { x: -2, y: -6, z: -10 });
-    gsap.set(word4Ref.current.position, { x: 2.2, y: 0, z: -2 });
+    // gsap.set(word1Ref.current.position, { x: 10, y: 3, z: -10 });
+    // gsap.set(word2Ref.current.position, { x: -2, z: -2 });
+    // gsap.set(word3Ref.current.position, { x: -2, y: -6, z: -10 });
+    // gsap.set(word4Ref.current.position, { x: 2.2, y: 0, z: -2 });
 
     const introTl = gsap.timeline({
       defaults: {
@@ -80,7 +81,7 @@ const Scene = () => {
       },
     });
 
-    introTl.to(bubble1GroupRef.current.scale, {
+    introTl.to(bubble1Ref.current.scale, {
       x: 1,
       y: 1,
       z: 1,
@@ -106,84 +107,13 @@ const Scene = () => {
       },
     });
 
-    scrollTl
-      .to(bubble1Ref.current.scale, { x: 2, y: 2, z: 2 })
-      .to(word1Ref.current.position, { x: -2, y: 0, z: -2 }, 0)
-      .to(word2Ref.current.position, { x: 2, y: 0, z: -2 }, 0)
-      .to(word3Ref.current.position, { x: 0.5, y: 0, z: -2 }, 0)
-      .to(word4Ref.current.position, { x: -0.7, y: 0, z: -2 }, 0);
+    // scrollTl
+    //   .to(bubble1Ref.current.scale, { x: 2, y: 2, z: 2 })
+    //   .to(word1Ref.current.position, { x: -2, y: 0, z: -2 }, 0)
+    //   .to(word2Ref.current.position, { x: 2, y: 0, z: -2 }, 0)
+    //   .to(word3Ref.current.position, { x: 0.5, y: 0, z: -2 }, 0)
+    //   .to(word4Ref.current.position, { x: -0.7, y: 0, z: -2 }, 0);
   });
-
-  // useGSAP(() => {
-  //   if (
-  //     !bubble1Ref.current ||
-  //     !bubble2Ref.current ||
-  //     !bubble1GroupRef.current ||
-  //     !bubble2GroupRef.current ||
-  //     // !bubble3Ref.current ||
-  //     !bubblesRef.current ||
-  //     !backgroundRef.current
-  //   )
-  //     return;
-
-  //   // Set bubble starting location
-  //   gsap.set(bubble1Ref.current.position, { x: -4, y: 2 });
-  //   gsap.set(bubble1Ref.current.scale, { x: 2, y: 2, z: 2 });
-  //   gsap.set(bubble2Ref.current.position, { x: 2, y: -2 });
-  //   // gsap.set(bubble3Ref.current.position, { x: 0, y: 0 });
-
-  //   const introTl = gsap.timeline({
-  //     defaults: {
-  //       duration: 3,
-  //       ease: "back.out(1.5)",
-  //     },
-  //   });
-
-  //   // introTl
-  //   //   .from(bubble1GroupRef.current.position, { y: -5, x: 1 })
-  //   //   .from(bubble2GroupRef.current.position, { y: 5, x: 1 }, 0);
-
-  //   // Play animation if a user scrolled
-  //   if (window.scrollY < 20) {
-  //     introTl
-  //       .from(bubble1GroupRef.current.position, { y: -5, x: 1 })
-  //       .from(bubble2GroupRef.current.position, { y: 5, x: 1 }, 0);
-  //   }
-
-  //   const scrollTl = gsap.timeline({
-  //     defaults: {
-  //       duration: 2,
-  //     },
-  //     scrollTrigger: {
-  //       trigger: ".hero",
-  //       start: "top top",
-  //       end: "bottom bottom",
-  //       // end: "+=2000",
-  //       scrub: 1.5,
-  //     },
-  //   });
-  //   scrollTl.to(bubblesRef.current.rotation, {
-  //     y: Math.PI,
-  //     // x: Math.PI * 2,
-  //     // z: 30,
-  //   });
-  //   //   .to(
-  //   //     bubble1Ref.current.position,
-  //   //     {
-  //   //       y: 2,
-  //   //     },
-  //   //     "<",
-  //   //   )
-  //   //   .to(
-  //   //     groupRef.current.position,
-  //   //     {
-  //   //       x: 3,
-  //   //       duration: 3,
-  //   //       ease: "sine.inOut",
-  //   //     },
-  //   //     1.3,
-  //   //   );
-  // });
 
   return (
     <>
@@ -203,8 +133,10 @@ const Scene = () => {
 
         <OrbitControls />
       </group> */}
+      {/* <OrbitControls /> */}
+      <Text3d />
       <Environment preset="city" />
-      <group ref={wordsGroupRef}>
+      {/* <group ref={wordsGroupRef}>
         <group ref={wordGroup1Ref}>
           <mesh rotation={[0.3, 0.2, 0]} ref={word1Ref}>
             <boxGeometry />
@@ -223,7 +155,7 @@ const Scene = () => {
           <boxGeometry />
           <meshStandardMaterial color={"red"} />
         </mesh>
-      </group>
+      </group> */}
 
       {/* <Background /> */}
     </>
