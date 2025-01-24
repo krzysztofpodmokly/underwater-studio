@@ -1,11 +1,16 @@
+import clsx from "clsx";
 import Link from "next/link";
 
-const Logo = () => {
+type LogoProps = {
+  className?: string;
+};
+
+const Logo = ({ className }: LogoProps) => {
   return (
     <Link
       href="/"
       aria-label="Home page"
-      className="text-xl font-extrabold tracking-tighter"
+      className={clsx("text-xl font-extrabold tracking-tighter", className)}
     >
       Logo
     </Link>

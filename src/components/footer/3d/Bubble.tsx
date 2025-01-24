@@ -3,11 +3,9 @@
 import Dispersion from "@/components/3d/disperion/Dispersion";
 import { View } from "@react-three/drei";
 
-type Props = {};
-
-const Bubble = (props: Props) => {
+const Bubble = () => {
   return (
-    <View className="pointer-events-none absolute top-0 h-screen w-screen">
+    <View className="pointer-events-none absolute h-screen w-screen">
       <Dispersion />
     </View>
   );

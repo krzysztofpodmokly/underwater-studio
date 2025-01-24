@@ -27,7 +27,6 @@ const Scene = () => {
         start: "top top",
         end: "bottom bottom",
         scrub: 4,
-        markers: true,
       },
     });
 

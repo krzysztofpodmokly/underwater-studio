@@ -52,7 +52,7 @@ const MagneticIcon = ({ children }: Props) => {
   return (
     <div
       ref={ref}
-      className="flex h-20 w-20 items-center justify-center text-6xl hover:cursor-pointer"
+      className="flex h-10 w-10 items-center justify-center text-6xl hover:cursor-pointer md:h-20 md:w-20"
     >
       {children}
     </div>

@@ -26,7 +26,6 @@ const AnimatedContent = ({ children }: Props) => {
           trigger: containerRef.current,
           start: "top 45%",
           toggleActions: "play pause resume reverse",
-          markers: true,
         },
       },
     );

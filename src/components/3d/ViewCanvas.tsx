@@ -13,8 +13,8 @@ const ViewCanvas = () => {
       style={{
         position: "fixed",
         top: 0,
-        left: "50%",
-        transform: "translateX(-50%)",
+        // left: "50%",
+        // transform: "translateX(-50%)",
         overflow: "hidden",
         width: "100vw",
         // pointerEvents: "none",
