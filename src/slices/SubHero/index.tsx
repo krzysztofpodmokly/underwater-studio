@@ -54,13 +54,10 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero relative mb-96 mt-72 h-screen"
+      className="sub-hero relative mb-52 mt-72 h-screen"
       centered
     >
-      <Heading
-        as="h2"
-        className="bg-gradient-to-b from-yellow-600 to-yellow-200 bg-clip-text pb-3 text-center text-transparent"
-      >
+      <Heading as="h2" size="lg">
         Heading 2
       </Heading>
       <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">

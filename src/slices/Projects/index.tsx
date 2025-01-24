@@ -21,12 +21,13 @@ const Projects = async ({ slice }: ProjectsProps): Promise<JSX.Element> => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="my-40"
     >
-      <Heading size="xl" className="mb-8">
+      <Heading size="lg" as="h2" className="mb-8">
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="mb-10">
+        <div className="mb-10 text-center">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}

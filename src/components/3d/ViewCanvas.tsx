@@ -25,7 +25,7 @@ const ViewCanvas = () => {
       }}
       // shadows
     >
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
 
       <Suspense fallback={null}>
         <View.Port />

@@ -12,6 +12,7 @@ import { Bounded } from "@/components/Bounded";
 import Button from "@/components/button/Button";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
+import Heading from "@/components/heading/Heading";
 
 /**
  * Props for `Hero`.
@@ -119,9 +120,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               alt=""
             />
             <div className="glass-container mt-16 grid w-fit text-white">
-              <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
+              {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
-              </h2>
+              </h2> */}
+              <Heading as="h1" size="xl">
+                Some title
+              </Heading>
               <div className="text-side-body mt-4 max-w-xl text-balance text-xl font-normal">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 pellentesque, nisl sit amet finibus pellentesque, sem orci
