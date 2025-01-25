@@ -138,6 +138,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
 
       // Pass the snapshot texture data to our shader material
       mesh.current.material.uniforms.uTexture.value = mainRenderTarget.texture;
+      mesh.current.rotation.set(0, elapsedTime * 0.2, elapsedTime * 0.4);
 
       gl.setRenderTarget(null);
 
@@ -194,6 +195,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
           geometry={(nodes.Icosphere as THREE.Mesh).geometry}
           customDepthMaterial={depthMaterial}
           ref={mesh}
+          scale={[0.5, 0.5, 0.5]}
         >
           <shaderMaterial
             vertexShader={vertexShader}

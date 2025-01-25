@@ -16,7 +16,7 @@ const Navigation = ({ navigation }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav aria-label="Main navigation" className="">
+    <nav aria-label="Main navigation" className="relative z-50">
       <ul className="flex flex-col justify-between px-4 py-2 md:m-4 md:flex-row md:items-center">
         <div className="flex items-center justify-between">
           <Logo />

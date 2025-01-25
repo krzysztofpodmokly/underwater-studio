@@ -215,7 +215,7 @@ const Text3d = () => {
   });
 
   return (
-    <group ref={containerRef}>
+    <group ref={containerRef} position={[-0.3, 0, 0]}>
       <group dispose={null} position={[0, 0, -3]} ref={lettersRef}>
         <group ref={OGroupRef}>
           <mesh
@@ -226,7 +226,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={ORef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -239,7 +239,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={IRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -252,7 +252,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={D2Ref}
           >
-            <meshStandardMaterial color="#64e9ee" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -265,7 +265,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={URef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -278,7 +278,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={T2Ref}
           >
-            <meshStandardMaterial color="#64e9ee" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -291,7 +291,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={SRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -304,7 +304,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={R2Ref}
           >
-            <meshStandardMaterial color="#64e9ee" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -317,7 +317,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={ERef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -330,7 +330,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={TRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -343,7 +343,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={ARef}
           >
-            <meshStandardMaterial color="#64e9ee" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -356,7 +356,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={WRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -369,7 +369,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={RRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -382,7 +382,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={E2Ref}
           >
-            <meshStandardMaterial color="#64e9ee" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -395,7 +395,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={DRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -408,7 +408,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={NRef}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
 
@@ -421,7 +421,7 @@ const Text3d = () => {
             rotation={[Math.PI / 2, 0, 0]}
             ref={U2Ref}
           >
-            <meshStandardMaterial color="#97c8eb" />
+            <meshStandardMaterial color="#3aafb9" />
           </mesh>
         </group>
       </group>

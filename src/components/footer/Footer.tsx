@@ -88,36 +88,3 @@ const Footer = async (props: Props) => {
 };
 
 export default Footer;
-
-{
-  /* <div className="mt-10 flex w-full flex-col items-center justify-between">
-<div className="navigation w-full" aria-label="Footer Navigation">
-  <ul className="flex items-center justify-between gap-1">
-    {navigation.data.items.map(({ link, label }, index) => (
-      <React.Fragment key={label}>
-        <li>
-          <PrismicNextLink
-            field={link}
-            className="transition-colors duration-150 hover:text-[#97c8eb]"
-          >
-            {label}
-          </PrismicNextLink>
-        </li>
-        {index < navigation.data.items.length - 1 && (
-          <span className="text-3xl leading-3 text-white">|</span>
-        )}
-      </React.Fragment>
-    ))}
-  </ul>
-</div>
-<div className="mt-12 flex w-full flex-col items-center justify-between gap-x-4 sm:flex-row">
-  <Logo />
-  <span className="text-3xl leading-3" aria-hidden={true}>
-    |
-  </span>
-  <p className="text-sm text-slate-300">
-    © {new Date().getFullYear()} Underwaterstudio
-  </p>
-</div>
-</div> */
-}

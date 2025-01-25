@@ -21,7 +21,7 @@ const Projects = async ({ slice }: ProjectsProps): Promise<JSX.Element> => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="my-40"
+      className="projects my-40"
     >
       <Heading size="lg" as="h2" className="mb-8">
         {slice.primary.heading}
