@@ -10,7 +10,7 @@ import { Group, Mesh } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Text3d from "./Text3d3";
+import Text3d from "./Text3d";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
