@@ -163,10 +163,6 @@ const Text3d = () => {
             ref={RRef}
           >
             <meshStandardMaterial />
-            {/* <shaderMaterial
-            vertexShader={vertexShader}
-            fragmentShader={fragmentShader}
-          /> */}
           </mesh>
         </group>
         <group ref={studioGroupRef}>
