@@ -45,7 +45,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
       wide: true,
       body: "Some description for Title 4",
       image:
-        "https://images.unsplash.com/photo-1734808215019-5e37cae896b4?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1671987552220-973918c6f3dc?q=80&w=1853&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 
@@ -53,8 +53,9 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero relative mb-24 mt-16 md:mb-52 md:mt-72 md:h-screen"
+      className="sub-hero relative mb-24 md:mb-52 md:mt-72 md:h-screen"
       centered
+      id="about"
     >
       <Heading as="h2" size="lg" center>
         Heading 2
@@ -63,21 +64,29 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
         Some random description
       </div>
 
-      <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-14 md:grid-cols-3">
-        {bentoBox.map((box) => (
-          <div
-            key={box.title}
-            className={clsx(
-              "glass-container relative row-span-3 grid grid-rows-subgrid gap-6 rounded-lg bg-gradient-to-b from-teal-950 to-teal-900 p-4",
-              box.wide ? "md:col-span-2" : "md:col-span-1",
-            )}
-          >
-            <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
-            <h3 className="text-2xl">{box.title}</h3>
-            <div className="max-w-md text-balance">{box.body}</div>
-            <img src={box.image} className="max-h-36 w-auto" alt="" />
-          </div>
-        ))}
+      <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-14 max-md:w-[90%] md:grid-cols-3">
+        {bentoBox.map((box) => {
+          console.log(box.image);
+          return (
+            <div
+              key={box.title}
+              className={clsx(
+                "glass-container relative row-span-3 grid grid-rows-subgrid gap-6 rounded-lg bg-gradient-to-b from-teal-950 to-teal-900 p-4",
+                box.wide ? "md:col-span-2" : "md:col-span-1",
+              )}
+            >
+              <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
+              <h3 className="text-2xl">{box.title}</h3>
+              <div className="max-w-md text-balance">{box.body}</div>
+              <div
+                className={`h-36 w-auto bg-cover bg-center`}
+                style={{
+                  backgroundImage: `url(${box.image})`,
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
       <View className="pointer-events-none absolute top-60 -z-[100] hidden h-screen w-screen md:block">
         <Scene />

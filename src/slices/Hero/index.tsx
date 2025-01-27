@@ -111,20 +111,20 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         </div>
         <div className="md:h-screen"></div>
         <div className="mx-14">
-          <div className="mb-20 grid h-screen md:mb-0 md:grid-cols-2">
+          <div className="grid h-screen md:mb-0 md:grid-cols-2">
             <PrismicNextImage
               field={slice.primary.bubble_image}
-              className="w-full md:hidden"
+              className="w-full rounded-xl md:hidden"
               alt=""
             />
-            <div className="glass-container mx-auto mt-16 h-fit gap-4 p-3">
+            <div className="glass-container mx-auto h-fit gap-4 p-3">
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
               <Heading as="h1" size="lg" center>
                 Some title
               </Heading>
-              <div className="text-side-body mt-4 max-w-xl text-balance text-sm font-normal md:text-lg lg:text-xl">
+              <div className="text-side-body mt-4 max-w-xl text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 pellentesque, nisl sit amet finibus pellentesque, sem orci
                 luctus ante, vel mollis justo turpis ac nulla. Ut aliquam felis

@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={merriweather.variable}>
       <body className="overflow-x-hidden bg-[#001011] text-slate-200 antialiased">
+        {/* <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" /> */}
         <main>
           <Header />
           {children}

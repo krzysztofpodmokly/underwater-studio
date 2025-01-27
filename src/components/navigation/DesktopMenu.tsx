@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
 import clsx from "clsx";
+import Link from "next/link";
 
 type DesktopMenuProps = {
   navigation: Content.NavigationDocument;
@@ -12,11 +12,14 @@ const DesktopMenu = ({ navigation }: DesktopMenuProps) => {
       {navigation.data.items.map((item, index) => (
         <li
           key={item.label}
-          className={clsx(index < navigation.data.items.length - 1 && "mr-20")}
+          className={clsx(
+            "transition-colors duration-150 hover:text-[#fe9000]",
+            index < navigation.data.items.length - 1 && "mr-20",
+          )}
         >
-          <PrismicNextLink field={item.link}>
+          <Link href={`#${item.link.text}`}>
             <span>{item.label}</span>
-          </PrismicNextLink>
+          </Link>
         </li>
       ))}
     </div>

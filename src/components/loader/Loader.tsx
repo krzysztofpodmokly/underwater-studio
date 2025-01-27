@@ -9,7 +9,7 @@ const Loader = () => {
   return (
     <div
       className={clsx(
-        "fixed inset-0 z-[1000] flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-[#001011] font-sans text-4xl text-white transition-opacity duration-1000 sm:text-5xl md:text-8xl",
+        "fixed inset-0 z-[1001] flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-[#001011] font-sans text-4xl text-white transition-opacity duration-1000 sm:text-5xl md:text-8xl",
         progress >= 100 ? "pointer-events-none opacity-0" : "opacity-100",
       )}
     >

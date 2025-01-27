@@ -1,6 +1,6 @@
 "use client";
 
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import React, { useState } from "react";
 import { MdMenu, MdClose, MdArrowBack } from "react-icons/md";
@@ -18,8 +18,13 @@ const Navigation = ({ navigation }: Props) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const handleScrollIntoView = (target: string) => {
+    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
+  };
+
   return (
-    <nav aria-label="Main navigation" className="relative z-[1000]">
+    <nav aria-label="Main navigation" className="relative z-[1001]">
       <ul className="flex flex-col justify-between px-4 py-2 md:m-4 md:flex-row md:items-center">
         <div
           className={clsx(
@@ -60,7 +65,14 @@ const Navigation = ({ navigation }: Props) => {
           <div className="flex h-full w-full flex-col items-center justify-center">
             {navigation.data.items.map((item) => (
               <li key={item.label} className="my-10 text-3xl">
-                <PrismicNextLink field={item.link}>
+                <PrismicNextLink
+                  field={item.link}
+                  onClick={() =>
+                    isFilled.keyText(item.link.text) &&
+                    handleScrollIntoView(`#${item.link.text}`)
+                  }
+                  className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
+                >
                   {item.label}
                 </PrismicNextLink>
               </li>
