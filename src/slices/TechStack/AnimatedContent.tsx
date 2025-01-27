@@ -32,7 +32,7 @@ const AnimatedContent = ({ children }: Props) => {
   });
 
   return (
-    <div ref={containerRef} className="relative top-5 -z-10">
+    <div ref={containerRef} className="relative -z-10 md:top-5">
       {children}
     </div>
   );

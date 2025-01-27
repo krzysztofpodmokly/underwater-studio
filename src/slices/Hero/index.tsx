@@ -89,11 +89,11 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      <View className="ffpointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+      <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
       </View>
       <div className="relative z-[100] grid">
-        <div className="grid h-screen place-items-center">
+        <div className="hidden place-items-center md:grid md:h-screen">
           <div className="grid auto-rows-min place-items-center text-center">
             {/* <h1 className="hero-header text-5xl font-black uppercase leading-[.8] text-slate-300 md:text-[4rem] lg:text-[6rem]">
               {asText(slice.primary.heading)}
@@ -111,22 +111,22 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             /> */}
           </div>
         </div>
-        <div className="h-screen"></div>
-        <Bounded>
-          <div className="grid h-screen items-center gap-4 md:grid-cols-2">
+        <div className="md:h-screen"></div>
+        <div className="mx-14">
+          <div className="mb-20 grid h-screen md:mb-0 md:grid-cols-2">
             <PrismicNextImage
               field={slice.primary.bubble_image}
               className="w-full md:hidden"
               alt=""
             />
-            <div className="glass-container mt-16 grid w-fit text-white">
+            <div className="glass-container mx-auto mt-16 h-fit gap-4 p-3">
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
-              <Heading as="h1" size="xl">
+              <Heading as="h1" size="lg" className="">
                 Some title
               </Heading>
-              <div className="text-side-body mt-4 max-w-xl text-balance text-xl font-normal">
+              <div className="text-side-body mt-4 max-w-xl text-balance text-sm font-normal md:text-lg lg:text-xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 pellentesque, nisl sit amet finibus pellentesque, sem orci
                 luctus ante, vel mollis justo turpis ac nulla. Ut aliquam felis
@@ -134,7 +134,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               </div>
             </div>
           </div>
-        </Bounded>
+        </div>
       </div>
     </section>
   );

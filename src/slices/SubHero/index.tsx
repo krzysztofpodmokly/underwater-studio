@@ -54,7 +54,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero relative mb-52 mt-72 h-screen"
+      className="sub-hero relative mb-24 mt-16 md:mb-52 md:mt-72 md:h-screen"
       centered
     >
       <Heading as="h2" size="lg">
@@ -64,7 +64,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
         Some random description
       </div>
 
-      <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-8 md:grid-cols-3 md:gap-14">
+      <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-14 md:grid-cols-3">
         {bentoBox.map((box) => (
           <div
             key={box.title}

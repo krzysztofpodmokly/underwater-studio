@@ -16,7 +16,7 @@ const Navigation = ({ navigation }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav aria-label="Main navigation" className="relative z-50">
+    <nav aria-label="Main navigation" className="relative z-[1000]">
       <ul className="flex flex-col justify-between px-4 py-2 md:m-4 md:flex-row md:items-center">
         <div className="flex items-center justify-between">
           <Logo />
@@ -31,7 +31,7 @@ const Navigation = ({ navigation }: Props) => {
         </div>
         <div
           className={clsx(
-            "fixed inset-0 z-50 flex flex-col items-end gap-4 bg-green-950 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
+            "fixed inset-0 z-[1000] flex flex-col items-end gap-4 bg-[#093a3e] pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -43,11 +43,15 @@ const Navigation = ({ navigation }: Props) => {
           >
             <MdClose />
           </button>
-          {navigation.data.items.map((item) => (
-            <li key={item.label}>
-              <PrismicNextLink field={item.link}>{item.label}</PrismicNextLink>
-            </li>
-          ))}
+          <div className="flex h-full w-full flex-col items-center justify-center">
+            {navigation.data.items.map((item) => (
+              <li key={item.label} className="my-10 text-3xl">
+                <PrismicNextLink field={item.link}>
+                  {item.label}
+                </PrismicNextLink>
+              </li>
+            ))}
+          </div>
         </div>
         <DesktopMenu navigation={navigation} />
       </ul>

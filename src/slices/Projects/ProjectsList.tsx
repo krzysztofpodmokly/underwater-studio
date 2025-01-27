@@ -113,14 +113,14 @@ const ProjectsList = ({
   return (
     <div className="z-[100]" ref={ref}>
       <ul
-        className="grid border-b border-b-slate-100"
+        className="grid border-b border-slate-100/20"
         onMouseLeave={onMouseLeave}
       >
         {projects.map(({ uid, data, tags }, index) => (
           <React.Fragment key={uid}>
             {isFilled.keyText(data.title) && (
               <li
-                className="opacity-0f list-item"
+                className="list-item opacity-0"
                 onMouseEnter={() => onMouseEnter(index)}
                 ref={(el) => {
                   projectsRef.current[index] = el;
@@ -128,18 +128,20 @@ const ProjectsList = ({
               >
                 <Link
                   href={`/project/${uid}`}
-                  className="flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row"
+                  className="flex flex-row justify-between border-t border-slate-100/20 py-10"
                   aria-label={data.title}
                 >
                   <div className="flex flex-col">
-                    <span className="text-3xl font-bold">{data.title}</span>
-                    <div className="flex gap-3 text-lg font-bold text-yellow-400">
+                    <span className="text-xl font-bold md:text-3xl">
+                      {data.title}
+                    </span>
+                    <div className="flex gap-3 text-sm font-bold text-[#fe9000] md:text-lg">
                       {tags.map((tag) => (
                         <span key={tag}>{tag}</span>
                       ))}
                     </div>
                   </div>
-                  <span className="ml-auto flex items-center gap-2 text-xl font-medium md:ml-0">
+                  <span className="text:sm ml-auto flex items-center gap-2 font-medium md:ml-0 md:text-xl">
                     {buttonText} <MdArrowOutward />
                   </span>
                 </Link>

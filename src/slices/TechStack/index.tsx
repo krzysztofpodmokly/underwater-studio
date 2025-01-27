@@ -72,19 +72,19 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
           <div
             key={name}
             aria-label={name || undefined}
-            className="technology-row relative mb-8 flex items-center justify-center gap-6 text-slate-500"
+            className="technology-row relative mb-3 flex items-center justify-center gap-6 text-slate-500 md:mb-8"
           >
             {Array.from({ length: 15 }, (_, index) => (
               <React.Fragment key={index}>
                 <span
-                  className="text-8xl font-extrabold uppercase tracking-tighter"
+                  className="text-4xl font-extrabold uppercase tracking-tighter md:text-8xl"
                   style={{
                     color: index === 6 && color ? color : "inherit",
                   }}
                 >
                   {name}
                 </span>
-                <span className="text-3xl">
+                <span className="text-sm md:text-3xl">
                   <MdCircle />
                 </span>
               </React.Fragment>
