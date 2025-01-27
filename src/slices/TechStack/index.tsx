@@ -1,6 +1,5 @@
 "use client";
 
-import { Bounded } from "@/components/Bounded";
 import Heading from "@/components/heading/Heading";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";

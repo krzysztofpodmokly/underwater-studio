@@ -1,15 +1,13 @@
 "use client";
 
-import { asText, Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Content } from "@prismicio/client";
+import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { View } from "@react-three/drei";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { Bounded } from "@/components/Bounded";
-import Button from "@/components/button/Button";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
 import Heading from "@/components/heading/Heading";

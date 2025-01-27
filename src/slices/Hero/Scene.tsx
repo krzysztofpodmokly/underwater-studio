@@ -1,11 +1,10 @@
 "use client";
 
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 
 import Dispersion from "@/components/3d/disperion/Dispersion";
-import Background from "@/components/3d/Background";
 import { useRef } from "react";
-import { Group, Mesh } from "three";
+import { Group } from "three";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -15,10 +14,8 @@ import Text3d from "./Text3d";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Scene = () => {
-  const bubblesRef = useRef<Group>(null);
   const bubble1Ref = useRef<Group>(null);
   const bubble2Ref = useRef<Group>(null);
-  const bubble3Ref = useRef<Group>(null);
 
   const bubble1GroupRef = useRef<Group>(null);
   const bubble2GroupRef = useRef<Group>(null);
@@ -73,7 +70,6 @@ const Scene = () => {
     const scrollTl = gsap.timeline({
       defaults: {
         duration: 2,
-        // ease: "back.inOut(3)",
       },
       scrollTrigger: {
         trigger: ".hero",

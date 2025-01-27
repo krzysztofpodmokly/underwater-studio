@@ -1,8 +1,8 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, View } from "@react-three/drei";
-import { Perf } from "r3f-perf";
+import { Preload, View } from "@react-three/drei";
+// import { Perf } from "r3f-perf";
 import { Suspense } from "react";
 
 const ViewCanvas = () => {
@@ -17,13 +17,12 @@ const ViewCanvas = () => {
         // transform: "translateX(-50%)",
         overflow: "hidden",
         width: "100vw",
-        // pointerEvents: "none",
+        pointerEvents: "none",
         zIndex: 30,
       }}
       gl={{
         antialias: true,
       }}
-      // shadows
     >
       {/* <Perf position="top-left" /> */}
 

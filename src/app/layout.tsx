@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
-import dynamic from "next/dynamic";
 
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/footer/Footer";
@@ -38,13 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={merriweather.variable}>
       <body className="overflow-x-hidden bg-[#001011] text-slate-200 antialiased">
-        {/* <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" /> */}
         <main>
           <Header />
           {children}
           <ViewCanvas />
           <Footer />
-          {/* <Loader /> */}
+          <Loader />
         </main>
       </body>
       <PrismicPreview repositoryName={repositoryName} />

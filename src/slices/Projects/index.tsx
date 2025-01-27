@@ -1,9 +1,10 @@
-import { Bounded } from "@/components/Bounded";
-import Heading from "@/components/heading/Heading";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import ProjectsList from "./ProjectsList";
 import { createClient } from "@/prismicio";
+
+import { Bounded } from "@/components/Bounded";
+import Heading from "@/components/heading/Heading";
 
 /**
  * Props for `Projects`.

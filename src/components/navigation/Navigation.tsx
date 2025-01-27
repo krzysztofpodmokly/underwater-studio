@@ -4,8 +4,9 @@ import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import React, { useState } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
-import Logo from "@/components/logo/Logo";
 import clsx from "clsx";
+
+import Logo from "@/components/logo/Logo";
 import DesktopMenu from "@/components/navigation/DesktopMenu";
 
 type Props = {

@@ -7,10 +7,6 @@ type DesktopMenuProps = {
 };
 
 const DesktopMenu = ({ navigation }: DesktopMenuProps) => {
-  const scrollIntoView = () => {
-    document.querySelector(".projects")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
       {navigation.data.items.map((item, index) => (
@@ -18,7 +14,6 @@ const DesktopMenu = ({ navigation }: DesktopMenuProps) => {
           key={item.label}
           className={clsx(index < navigation.data.items.length - 1 && "mr-20")}
         >
-          {/* <button onClick={scrollIntoView}>Hello</button> */}
           <PrismicNextLink field={item.link}>
             <span>{item.label}</span>
           </PrismicNextLink>

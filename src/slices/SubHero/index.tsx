@@ -4,10 +4,9 @@ import { Bounded } from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { View } from "@react-three/drei";
-import Heading from "@/components/heading/Heading";
-import { PrismicNextImage } from "@prismicio/next";
-import Image from "next/image";
 import clsx from "clsx";
+
+import Heading from "@/components/heading/Heading";
 import Scene from "./Scene";
 
 /**
