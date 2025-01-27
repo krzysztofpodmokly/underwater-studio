@@ -121,7 +121,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
-              <Heading as="h1" size="lg" className="">
+              <Heading as="h1" size="lg" center>
                 Some title
               </Heading>
               <div className="text-side-body mt-4 max-w-xl text-balance text-sm font-normal md:text-lg lg:text-xl">

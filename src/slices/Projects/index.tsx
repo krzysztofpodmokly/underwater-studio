@@ -24,7 +24,7 @@ const Projects = async ({ slice }: ProjectsProps): Promise<JSX.Element> => {
       data-slice-variation={slice.variation}
       className="projects my-40"
     >
-      <Heading size="lg" as="h2" className="mb-8">
+      <Heading size="lg" as="h2" className="mb-8" center>
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (

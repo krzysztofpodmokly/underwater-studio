@@ -3,11 +3,12 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import React, { useState } from "react";
-import { MdMenu, MdClose } from "react-icons/md";
+import { MdMenu, MdClose, MdArrowBack } from "react-icons/md";
 import clsx from "clsx";
 
-import Logo from "@/components/logo/Logo";
 import DesktopMenu from "@/components/navigation/DesktopMenu";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {
   navigation: Content.NavigationDocument;
@@ -15,12 +16,24 @@ type Props = {
 
 const Navigation = ({ navigation }: Props) => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav aria-label="Main navigation" className="relative z-[1000]">
       <ul className="flex flex-col justify-between px-4 py-2 md:m-4 md:flex-row md:items-center">
-        <div className="flex items-center justify-between">
-          <Logo />
+        <div
+          className={clsx(
+            "flex items-center",
+            pathname === "/" ? "justify-end" : "justify-between",
+          )}
+        >
+          {pathname !== "/" && (
+            <Link href="/">
+              <span className="text:sm ml-auto flex items-center gap-2 font-medium md:ml-0 md:text-xl">
+                <MdArrowBack />
+              </span>
+            </Link>
+          )}
           <button
             aria-expanded={open}
             aria-label="Open menu"

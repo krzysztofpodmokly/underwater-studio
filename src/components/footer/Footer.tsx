@@ -41,15 +41,15 @@ const Footer = async () => {
           </MagneticIcon>
         </div>
         <div className="relative top-40 flex w-full flex-col justify-between md:flex-row">
-          <div className="order-1 mt-12 flex items-center justify-center md:-order-1">
-            <Logo />
+          <div className="order-1 mt-12 flex flex-col items-center justify-center md:-order-1 md:flex-row">
+            <Logo className="order-1 max-md:mt-10 md:-order-1" />
             <span
               className="mx-8 hidden text-3xl leading-3 md:block"
               aria-hidden={true}
             >
               |
             </span>
-            <div className="ml-8 text-sm text-slate-300 md:ml-0">
+            <div className="ml-8 text-sm text-slate-300 max-md:text-center md:ml-0">
               <p>© {new Date().getFullYear()} Underwater Studio</p>
               <p className="my-1 text-balance">krzysztof.podmokly@gmail.com</p>
               <p>+48 728 532 307</p>

@@ -61,7 +61,7 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
       ref={containerRef}
     >
       <AnimatedContent>
-        <Heading size="xl" as="h2">
+        <Heading size="xl" as="h2" center>
           {slice.primary.heading}
         </Heading>
       </AnimatedContent>

@@ -56,7 +56,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
       className="sub-hero relative mb-24 mt-16 md:mb-52 md:mt-72 md:h-screen"
       centered
     >
-      <Heading as="h2" size="lg">
+      <Heading as="h2" size="lg" center>
         Heading 2
       </Heading>
       <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">
