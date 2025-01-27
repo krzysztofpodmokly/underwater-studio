@@ -3,8 +3,6 @@
 import { useProgress } from "@react-three/drei";
 import clsx from "clsx";
 
-import Logo from "@/components/logo/Logo";
-
 const Loader = () => {
   const { progress } = useProgress();
 
