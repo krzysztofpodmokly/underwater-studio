@@ -135,7 +135,7 @@ const ProjectsList = ({
                     <span className="text-xl font-bold md:text-3xl">
                       {data.title}
                     </span>
-                    <div className="flex gap-3 text-sm font-bold text-[#fe9000] md:text-lg">
+                    <div className="flex flex-wrap gap-3 text-sm font-bold text-[#fe9000] md:text-lg">
                       {tags.map((tag) => (
                         <span key={tag}>{tag}</span>
                       ))}

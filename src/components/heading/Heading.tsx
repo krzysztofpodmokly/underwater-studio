@@ -19,8 +19,8 @@ export default function Heading({
     <Comp
       className={clsx(
         "text-balance bg-gradient-to-b from-[#fe9000] to-yellow-200 bg-clip-text pb-3 font-bold leading-tight tracking-tight text-transparent",
-        size === "xl" && "text-7xl max-sm:text-4xl md:text-9xl",
-        size === "lg" && "text-6xl max-sm:text-3xl md:text-8xl",
+        size === "xl" && "text-7xl max-sm:text-5xl md:text-9xl",
+        size === "lg" && "text-6xl max-sm:text-4xl md:text-8xl",
         size === "md" && "text-5xl md:text-6xl",
         size === "sm" && "text-3xl md:text-4xl",
         center && "text-center",

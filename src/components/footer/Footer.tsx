@@ -74,7 +74,7 @@ const Footer = async () => {
           <ul className="flex items-center justify-evenly gap-1">
             {filteredNav.map(({ link, label }, index) => (
               <React.Fragment key={label}>
-                <li>
+                <li className="transition-colors duration-150 hover:text-[#fe9000]">
                   <Link href={`#${link.text}`}>
                     <span>{label}</span>
                   </Link>

@@ -53,11 +53,11 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero relative mb-24 mt-12 md:mb-52 md:mt-72 md:h-screen"
+      className="sub-hero relative mb-24 md:mb-52 md:mt-72 md:h-screen"
       centered
       id="about"
     >
-      <Heading as="h2" size="lg" center>
+      <Heading as="h2" size="lg" center className="max-sm:mt-48">
         Our Services
       </Heading>
       <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">

@@ -16,8 +16,8 @@ const Scene = () => {
   useGSAP(() => {
     if (!group1Ref.current || !group2Ref.current) return;
 
-    gsap.set(group1Ref.current.position, { x: -1.3 });
-    gsap.set(group2Ref.current.position, { x: 1.4 });
+    gsap.set(group1Ref.current.position, { x: -1.8, y: -0.6 });
+    gsap.set(group2Ref.current.position, { x: 2.0, y: 0.3 });
     gsap.set(group1Ref.current.scale, { x: 0.4, y: 0.4, z: 0.4 });
     gsap.set(group2Ref.current.scale, { x: 0.5, y: 0.5, z: 0.5 });
 

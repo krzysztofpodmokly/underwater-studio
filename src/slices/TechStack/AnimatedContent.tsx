@@ -19,7 +19,7 @@ const AnimatedContent = ({ children }: Props) => {
       containerRef.current,
       { y: 100 },
       {
-        y: 0,
+        y: 30,
         ease: "power2.inOut",
         duration: 1,
         scrollTrigger: {
@@ -32,7 +32,7 @@ const AnimatedContent = ({ children }: Props) => {
   });
 
   return (
-    <div ref={containerRef} className="relative -z-10 md:top-5">
+    <div ref={containerRef} className="relative -z-10 max-sm:-top-5 md:top-5">
       {children}
     </div>
   );
