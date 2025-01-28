@@ -211,11 +211,11 @@ const Text3d = () => {
         { x: 2, y: 0.3, duration: 3, ease: "power1.inOut" },
         1.2,
       )
-      .to(containerRef.current.scale, { x: 0.7, y: 0.7, z: 0.7 }, 1.5);
+      .to(containerRef.current.scale, { x: 0.6, y: 0.6, z: 0.6 }, 1.5);
   });
 
   return (
-    <group ref={containerRef} position={[-0.3, 0, 0]}>
+    <group ref={containerRef} position={[-0.1, 0, 1]}>
       <group dispose={null} position={[0, 0, -3]} ref={lettersRef}>
         <group ref={OGroupRef}>
           <mesh

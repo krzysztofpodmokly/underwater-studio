@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Preload, View } from "@react-three/drei";
 // import { Perf } from "r3f-perf";
 import { Suspense } from "react";
+import { Leva } from "leva";
 
 const ViewCanvas = () => {
   return (
@@ -30,6 +31,7 @@ const ViewCanvas = () => {
         <View.Port />
         <Preload all />
       </Suspense>
+      <Leva hidden />
     </Canvas>
   );
 };

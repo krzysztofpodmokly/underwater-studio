@@ -49,7 +49,7 @@ const Scene = () => {
 
     gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
     gsap.set(bubble2Ref.current.position, { x: -1, y: -5, z: -5 });
-    gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
+    gsap.set(bubble1GroupRef.current.scale, { x: 2.3, y: 2.3, z: 2.3 });
     gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
 
     if (window.scrollY < 20) {
@@ -95,9 +95,8 @@ const Scene = () => {
         <Dispersion ref={bubble2Ref} {...bubbleConfig2} />
       </group>
 
-      <Text3d />
-
       <Environment preset="city" />
+      <Text3d />
     </>
   );
 };
