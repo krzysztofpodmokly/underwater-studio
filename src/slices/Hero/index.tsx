@@ -117,7 +117,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               className="w-full rounded-xl md:hidden"
               alt=""
             />
-            <div className="glass-container mx-auto h-fit gap-4 p-3">
+            <div className="glass-container mx-auto mt-10 h-fit gap-4 p-3">
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
