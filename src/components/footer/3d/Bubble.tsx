@@ -6,7 +6,7 @@ import { View } from "@react-three/drei";
 const Bubble = () => {
   return (
     <View className="pointer-events-none absolute hidden h-screen w-screen md:block">
-      <Dispersion />
+      <Dispersion name="footer-bubble" />
     </View>
   );
 };

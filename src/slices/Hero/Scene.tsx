@@ -27,6 +27,7 @@ const Scene = () => {
     warpPositionFrequency: 1.3,
     warpTimeFrequency: 0.4,
     warpStrength: 0.6,
+    light: { x: -8, y: -15, z: 1 },
   };
 
   const bubbleConfig2 = {
@@ -49,7 +50,7 @@ const Scene = () => {
 
     gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
     gsap.set(bubble2Ref.current.position, { x: -1, y: -5, z: -5 });
-    gsap.set(bubble1GroupRef.current.scale, { x: 2.3, y: 2.3, z: 2.3 });
+    gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
     gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
 
     if (window.scrollY < 20) {
@@ -88,11 +89,13 @@ const Scene = () => {
 
   return (
     <>
-      <group ref={bubble1GroupRef}>
-        <Dispersion ref={bubble1Ref} {...bubbleConfig} />
-      </group>
-      <group ref={bubble2GroupRef}>
-        <Dispersion ref={bubble2Ref} {...bubbleConfig2} />
+      <group position={[0, 0, 1]}>
+        <group ref={bubble1GroupRef}>
+          <Dispersion ref={bubble1Ref} {...bubbleConfig} name="primary" />
+        </group>
+        <group ref={bubble2GroupRef}>
+          <Dispersion ref={bubble2Ref} {...bubbleConfig2} name="secondary" />
+        </group>
       </group>
 
       <Environment preset="city" />

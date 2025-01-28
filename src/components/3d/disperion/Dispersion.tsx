@@ -11,25 +11,27 @@ import fragmentShader from "./shaders/fragment.glsl";
 import { useStore } from "@/hooks/useStore";
 
 type DispersionModelProps = {
-  name?: string;
+  name: string;
   positionFrequency?: number;
   timeFrequency?: number;
   strength?: number;
   warpPositionFrequency?: number;
   warpTimeFrequency?: number;
   warpStrength?: number;
+  light?: { x: number; y: number; z: number };
 };
 
 const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
   (
     {
-      name = "default",
+      name,
       positionFrequency = 0.15,
       timeFrequency = 0.25,
       strength = 0.15,
       warpPositionFrequency = 1.3,
       warpTimeFrequency = 0.4,
       warpStrength = 0.6,
+      light: lightConfig = { x: -1, y: -1, z: 1 },
     },
     ref,
   ) => {
@@ -37,7 +39,6 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
     const { nodes } = useGLTF("/models/sphere.glb");
     const mesh =
       useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
-    // const backgroundGroup = useRef<THREE.Group>(null);
     const mainRenderTarget = useFBO();
 
     const materialProps = useControls(`${name}`, {
@@ -54,7 +55,9 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
         refraction: { value: 0.4, min: 0, max: 1, step: 0.001 },
         chromaticAberration: { value: 0.5, min: 0, max: 1.5, step: 0.001 },
         saturation: { value: 1.06, min: 0, max: 1.25, step: 0.001 },
-        light: { value: { x: -1, y: 1, z: 1 } },
+        light: {
+          value: { x: lightConfig.x, y: lightConfig.y, z: lightConfig.z },
+        },
         diffuseness: { value: 0.2 },
         shininess: { value: 40.0 },
         fresnelPower: { value: 8 },
