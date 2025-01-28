@@ -55,7 +55,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="sub-hero relative mb-24 md:mb-52 md:mt-72 md:h-screen"
       centered
-      id="about"
+      id="services"
     >
       <Heading as="h2" size="lg" center className="max-sm:mt-48">
         Our Services

@@ -5,10 +5,10 @@ import { PrismicNextLink } from "@prismicio/next";
 import React, { useState } from "react";
 import { MdMenu, MdClose, MdArrowBack } from "react-icons/md";
 import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 import DesktopMenu from "@/components/navigation/DesktopMenu";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 type Props = {
   navigation: Content.NavigationDocument;
@@ -22,6 +22,16 @@ const Navigation = ({ navigation }: Props) => {
     document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   };
+
+  const isHomepage = pathname === "/";
+
+  const filteredNav = isHomepage
+    ? [...navigation.data.items.filter((item) => item.label !== "Home")]
+    : [
+        ...navigation.data.items.filter(
+          (item) => item.label !== "Services" && item.label !== "Projects",
+        ),
+      ];
 
   return (
     <nav aria-label="Main navigation" className="relative z-[1001]">
@@ -63,23 +73,35 @@ const Navigation = ({ navigation }: Props) => {
             <MdClose />
           </button>
           <div className="flex h-full w-full flex-col items-center justify-center">
-            {navigation.data.items.map((item) => (
-              <li key={item.label} className="my-10 text-3xl">
-                <PrismicNextLink
-                  field={item.link}
-                  onClick={() =>
-                    isFilled.keyText(item.link.text) &&
-                    handleScrollIntoView(`#${item.link.text}`)
-                  }
-                  className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
-                >
-                  {item.label}
-                </PrismicNextLink>
+            {filteredNav.map(({ label, link }) => (
+              <li key={label} className="my-10 text-3xl">
+                {label !== "Home" ? (
+                  <PrismicNextLink
+                    field={link}
+                    onClick={() =>
+                      isFilled.keyText(link.text) &&
+                      handleScrollIntoView(`#${link.text}`)
+                    }
+                    className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
+                  >
+                    {label}
+                  </PrismicNextLink>
+                ) : (
+                  <Link
+                    href={"/"}
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                    className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
+                  >
+                    {label}
+                  </Link>
+                )}
               </li>
             ))}
           </div>
         </div>
-        <DesktopMenu navigation={navigation} />
+        <DesktopMenu navigation={filteredNav} />
       </ul>
     </nav>
   );

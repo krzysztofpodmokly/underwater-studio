@@ -1,25 +1,34 @@
-import { Content } from "@prismicio/client";
 import clsx from "clsx";
 import Link from "next/link";
 
+import {
+  NavigationDocumentDataItemsItem,
+  Simplify,
+} from "../../../prismicio-types";
+
 type DesktopMenuProps = {
-  navigation: Content.NavigationDocument;
+  navigation: Simplify<NavigationDocumentDataItemsItem>[];
 };
 
 const DesktopMenu = ({ navigation }: DesktopMenuProps) => {
   return (
     <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {navigation.data.items.map((item, index) => (
+      {navigation.map(({ label, link }, index) => (
         <li
-          key={item.label}
+          key={label}
           className={clsx(
             "transition-colors duration-150 hover:text-[#fe9000]",
-            index < navigation.data.items.length - 1 && "mr-20",
+            index < navigation.length - 1 && "mr-20",
           )}
         >
-          <Link href={`#${item.link.text}`}>
-            <span>{item.label}</span>
-          </Link>
+          {
+            <Link
+              href={label === "Home" ? "/" : `#${link.text}`}
+              className="my-10 transition-colors duration-150 hover:text-[#fe9000]"
+            >
+              <span>{label}</span>
+            </Link>
+          }
         </li>
       ))}
     </div>

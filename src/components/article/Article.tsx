@@ -16,7 +16,7 @@ const Article = ({ page }: ArticleProps) => {
         <Heading as="h1" size="lg">
           {page.data.title}
         </Heading>
-        <div className="text-md flex gap-4 font-bold text-[#fe9000] md:text-xl">
+        <div className="text-md flex flex-wrap gap-4 font-bold text-[#fe9000] md:text-xl">
           {page.tags.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}

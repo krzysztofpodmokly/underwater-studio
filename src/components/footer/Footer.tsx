@@ -1,25 +1,21 @@
-import {
-  FaStackOverflow,
-  FaLinkedin,
-  FaSquareInstagram,
-  FaGithub,
-} from "react-icons/fa6";
-import {} from "react-icons/fa";
+import { FaLinkedin, FaSquareInstagram, FaGithub } from "react-icons/fa6";
 import { createClient } from "@/prismicio";
 import React from "react";
+import Link from "next/link";
+
+import Logo from "@/components/logo/Logo";
 
 import { Bounded } from "../Bounded";
 import MagneticIcon from "./MagneticIcon";
-import Logo from "@/components/logo/Logo";
 import Bubble from "./3d/Bubble";
-import Link from "next/link";
+import FooterNav from "./FooterNav";
 
 const Footer = async () => {
   const client = createClient();
   const navigation = await client.getSingle("navigation");
 
   const filteredNav = navigation.data.items.filter(
-    ({ label }) => label !== "Contact",
+    ({ label }) => label !== "Contact" && label !== "Home",
   );
 
   return (
@@ -27,19 +23,13 @@ const Footer = async () => {
       as="footer"
       className="footer relative h-screen bg-[#001011]"
       centered
-      id="footer"
+      id="contact"
     >
       <div className="background-gradient absolute inset-0 z-50 max-h-screen" />
       <div className="pointer-events-none absolute inset-0 z-40 bg-[url('/textures/noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
       <Bubble />
       <div className="z-50 flex h-full w-full flex-col items-center justify-center">
         <div className="flex gap-10">
-          <Link href="https://stackoverflow.com/users/11566541/krzysztof-podmok%c5%82y">
-            <MagneticIcon>
-              <FaStackOverflow />
-            </MagneticIcon>
-          </Link>
-
           <Link href="https://www.linkedin.com/in/krzysztof-podmokly-144069177/">
             <MagneticIcon>
               <FaLinkedin />
@@ -71,7 +61,8 @@ const Footer = async () => {
               <p>+48 728 532 307</p>
             </div>
           </div>
-          <ul className="flex items-center justify-evenly gap-1">
+          <FooterNav navigation={filteredNav} />
+          {/* <ul className="flex items-center justify-evenly gap-1">
             {filteredNav.map(({ link, label }, index) => (
               <React.Fragment key={label}>
                 <li className="transition-colors duration-150 hover:text-[#fe9000]">
@@ -89,7 +80,7 @@ const Footer = async () => {
                 )}
               </React.Fragment>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </div>
     </Bounded>
