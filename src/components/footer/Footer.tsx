@@ -6,7 +6,6 @@ import {
 } from "react-icons/fa6";
 import {} from "react-icons/fa";
 import { createClient } from "@/prismicio";
-// import { PrismicNextLink } from "@prismicio/next";
 import React from "react";
 
 import { Bounded } from "../Bounded";
@@ -17,7 +16,11 @@ import Link from "next/link";
 
 const Footer = async () => {
   const client = createClient();
-  // const navigation = await client.getSingle("navigation");
+  const navigation = await client.getSingle("navigation");
+
+  const filteredNav = navigation.data.items.filter(
+    ({ label }) => label !== "Contact",
+  );
 
   return (
     <Bounded
@@ -68,18 +71,15 @@ const Footer = async () => {
               <p>+48 728 532 307</p>
             </div>
           </div>
-          {/* <ul className="flex items-center justify-evenly gap-1">
-            {navigation.data.items.map(({ link, label }, index) => (
+          <ul className="flex items-center justify-evenly gap-1">
+            {filteredNav.map(({ link, label }, index) => (
               <React.Fragment key={label}>
                 <li>
-                  <PrismicNextLink
-                    field={link}
-                    className="transition-colors duration-150 hover:text-[#fe9000]"
-                  >
-                    {label}
-                  </PrismicNextLink>
+                  <Link href={`#${link.text}`}>
+                    <span>{label}</span>
+                  </Link>
                 </li>
-                {index < navigation.data.items.length - 1 && (
+                {index < filteredNav.length - 1 && (
                   <span
                     className="mx-2 text-3xl leading-3 md:mx-8"
                     aria-hidden={true}
@@ -89,7 +89,7 @@ const Footer = async () => {
                 )}
               </React.Fragment>
             ))}
-          </ul> */}
+          </ul>
         </div>
       </div>
     </Bounded>

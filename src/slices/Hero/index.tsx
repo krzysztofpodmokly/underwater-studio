@@ -111,7 +111,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         </div>
         <div className="md:h-screen"></div>
         <div className="mx-14">
-          <div className="grid h-screen md:mb-0 md:grid-cols-2">
+          <div className="grid h-[70vh] md:mb-0 md:h-screen md:grid-cols-2">
             <PrismicNextImage
               field={slice.primary.bubble_image}
               className="w-full rounded-xl md:hidden"
@@ -122,13 +122,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 Some title
               </h2> */}
               <Heading as="h1" size="lg" center>
-                Some title
+                Where Art Meets Technology
               </Heading>
               <div className="text-side-body mt-4 max-w-xl text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                pellentesque, nisl sit amet finibus pellentesque, sem orci
-                luctus ante, vel mollis justo turpis ac nulla. Ut aliquam felis
-                vel felis dictum, non commodo dolor auctor.
+                Welcome to Underwater Studio, a creative haven where artistry
+                and technology converge. We specialize in 3D modeling, website
+                creation, and drone footage filming, crafting digital
+                experiences that are as beautiful as they are functional. Let us
+                turn your vision into a masterpiece.
               </div>
             </div>
           </div>
