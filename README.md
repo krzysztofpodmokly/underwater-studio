@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Underwater Studio
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+This portfolio website is a creative showcase of my work, featuring a blend of interactive 3D models and dynamic animations. Built with modern web technologies, it provides an immersive user experience where seamless animations and stunning visuals come together. Explore my creative journey through engaging, interactive features that highlight my passion for innovative web development.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Underwater Studio](https://images.prismic.io/underwater-studio/Z5egtZbqstJ9946T_bubble-hero.png?auto=format,compress)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tools and Technologies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The following tools and libraries were used to build this project:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **[@prismicio](https://prismic.io/)**
+- **[@react-three/fiber](https://github.com/pmndrs/react-three-fiber)**
+- **[GSAP](https://greensock.com/gsap/)**
+- **[Next.js](https://nextjs.org/) (v14.2.4)**
+- **[React](https://reactjs.org/) (v18.3.1)**
+- **[Three.js](https://threejs.org/)**
+- **[Zustand](https://zustand-demo.pmnd.rs/)**
+- **[Tailwind CSS](https://tailwindcss.com/)**
+- **[TypeScript](https://www.typescriptlang.org/)**
 
-## Learn More
+## Installation and Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/krzysztofpodmokly/underwater-studio
+   cd underwater-studio
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the development server**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
+4. **Build for production**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
