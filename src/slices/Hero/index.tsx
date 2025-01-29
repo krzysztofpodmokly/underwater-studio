@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
 import Heading from "@/components/heading/Heading";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 /**
  * Props for `Hero`.
@@ -23,6 +24,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
   const ready = useStore((state) => state.ready);
 
   useGSAP(
@@ -121,7 +123,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
-              <Heading as="h1" size="lg">
+              <Heading as="h1" size="lg" center={!isDesktop}>
                 Where Art Meets Technology
               </Heading>
               <div className="text-side-body mt-4 max-w-fit text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">

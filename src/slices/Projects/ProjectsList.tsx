@@ -110,13 +110,26 @@ const ProjectsList = ({
     setCurrentProject(null);
   };
 
+  const desiredOrder = [
+    "flat-configurator",
+    "bardzo-milo",
+    "suburbia-skate",
+    "feather",
+  ];
+
+  const sortedProjects = projects.sort((a, b) => {
+    const indexA = desiredOrder.indexOf(a.uid);
+    const indexB = desiredOrder.indexOf(b.uid);
+    return indexA - indexB;
+  });
+
   return (
     <div className="z-[100]" ref={ref}>
       <ul
         className="grid border-b border-slate-100/20"
         onMouseLeave={onMouseLeave}
       >
-        {projects.map(({ uid, data, tags }, index) => (
+        {sortedProjects.map(({ uid, data, tags }, index) => (
           <React.Fragment key={uid}>
             {isFilled.keyText(data.title) && (
               <li
