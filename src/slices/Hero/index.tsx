@@ -121,10 +121,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               {/* <h2 className="text-side-heading text-balance text-6xl font-black uppercase lg:text-8xl">
                 Some title
               </h2> */}
-              <Heading as="h1" size="lg" center>
+              <Heading as="h1" size="lg">
                 Where Art Meets Technology
               </Heading>
-              <div className="text-side-body mt-4 max-w-xl text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">
+              <div className="text-side-body mt-4 max-w-fit text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">
                 Welcome to Underwater Studio, a creative haven where artistry
                 and technology converge. We specialize in 3D modeling, website
                 creation, and drone footage filming, crafting digital

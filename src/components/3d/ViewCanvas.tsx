@@ -31,7 +31,7 @@ const ViewCanvas = () => {
         <View.Port />
         <Preload all />
       </Suspense>
-      {/* <Leva hidden /> */}
+      <Leva hidden />
     </Canvas>
   );
 };
