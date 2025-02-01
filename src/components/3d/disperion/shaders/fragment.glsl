@@ -17,7 +17,7 @@ uniform float uFresnelPower;
 varying vec3 worldNormal;
 varying vec3 eyeVector;
 
-const int LOOP = 16;
+const int LOOP = 1;
 
 float fresnel(vec3 eyeVector, vec3 worldNormal, float power) {
   float fresnelFactor = abs(dot(eyeVector, worldNormal));
@@ -56,7 +56,7 @@ void main() {
   float iorRatioBlue = 1.0 / uIorB;
   float iorRatioViolet = 1.0 / uIorP;
 
-  vec3 color = vec3(0.0, 0.0627451 +0.3, 0.0666667 + 0.3); // Starting bubble color
+  vec3 color = vec3(0.0, 0.0627451, 0.0666667); // Starting bubble color
 
   vec2 uv = gl_FragCoord.xy / winResolution.xy;
   vec3 normal = worldNormal;
