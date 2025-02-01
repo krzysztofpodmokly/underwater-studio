@@ -41,9 +41,9 @@ export default function RootLayout({
         <main>
           <Header />
           {children}
-          <ViewCanvas />
+          {/* <ViewCanvas /> */}
           <Footer />
-          <Loader />
+          {/* <Loader /> */}
         </main>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
