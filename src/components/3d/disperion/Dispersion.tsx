@@ -188,15 +188,10 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
         materialProps.warpStrength;
     });
 
-    const depthMaterial = new THREE.MeshDepthMaterial({
-      depthPacking: THREE.RGBADepthPacking,
-    });
-
     return (
       <group ref={ref}>
         <mesh
           geometry={(nodes.Icosphere as THREE.Mesh).geometry}
-          customDepthMaterial={depthMaterial}
           ref={mesh}
           scale={[0.5, 0.5, 0.5]}
         >
