@@ -40,22 +40,22 @@ const Distorted = () => {
     <Float speed={5} rotationIntensity={1} floatIntensity={2}>
       <group>
         <mesh>
-          <sphereGeometry args={[1, 64, 64]} />
+          <sphereGeometry args={[1, 32, 32]} />
           <MeshTransmissionMaterial {...config} />
         </mesh>
 
         <group ref={groupRef}>
           <Environment preset="city" />
           <mesh position={[0, 0, 0.25]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
+            <sphereGeometry args={[0.2, 1, 1]} />
             <meshStandardMaterial color="#64e9ee" />
           </mesh>
           <mesh position={[-0.2, 0, -0.12]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
+            <sphereGeometry args={[0.2, 1, 1]} />
             <meshStandardMaterial color="#093a3e" />
           </mesh>
           <mesh position={[0.2, 0, -0.12]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
+            <sphereGeometry args={[0.2, 1, 1]} />
             <meshStandardMaterial color="#97c8eb" />
           </mesh>
         </group>
