@@ -89,9 +89,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+      {/* <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
-      </View>
+      </View> */}
       <div className="relative z-[100] grid">
         <div className="hidden place-items-center md:grid md:h-screen">
           <div className="grid auto-rows-min place-items-center text-center">
