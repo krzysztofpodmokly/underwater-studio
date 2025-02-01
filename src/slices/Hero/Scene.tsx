@@ -83,7 +83,7 @@ const Scene = () => {
     scrollTl
       .to(bubble1Ref.current.scale, { x: 0.3, y: 0.3, z: 0.3 }, 1.3)
       .to(bubble1Ref.current.position, { x: 0.8, y: -0.3, z: 0 }, "<")
-      .to(bubble2Ref.current.position, { x: 0, y: 0, z: 0 }, "<")
+      .to(bubble2Ref.current.position, { x: 0, y: 0.1, z: 0 }, "<")
       .to(bubble2Ref.current.scale, { x: 2, y: 2, z: 2 }, "<");
   });
 

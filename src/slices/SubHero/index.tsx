@@ -3,11 +3,9 @@
 import { Bounded } from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { View } from "@react-three/drei";
 import clsx from "clsx";
 
 import Heading from "@/components/heading/Heading";
-import Scene from "./Scene";
 
 /**
  * Props for `SubHero`.
@@ -53,7 +51,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="sub-hero relative mb-24 md:mb-52 md:mt-72 md:h-screen"
+      className="sub-hero relative mb-24 md:mb-96 md:mt-72 md:h-screen"
       centered
       id="services"
     >
@@ -85,9 +83,6 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
           </div>
         ))}
       </div>
-      {/* <View className="pointer-events-none absolute top-60 -z-[100] hidden h-screen w-screen md:block">
-        <Scene />
-      </View> */}
     </Bounded>
   );
 };

@@ -15,7 +15,7 @@ const Footer = async () => {
   const navigation = await client.getSingle("navigation");
 
   const filteredNav = navigation.data.items.filter(
-    ({ label }) => label !== "Contact" && label !== "Home",
+    ({ label }) => label !== "Contact",
   );
 
   return (
@@ -62,25 +62,6 @@ const Footer = async () => {
             </div>
           </div>
           <FooterNav navigation={filteredNav} />
-          {/* <ul className="flex items-center justify-evenly gap-1">
-            {filteredNav.map(({ link, label }, index) => (
-              <React.Fragment key={label}>
-                <li className="transition-colors duration-150 hover:text-[#fe9000]">
-                  <Link href={`#${link.text}`}>
-                    <span>{label}</span>
-                  </Link>
-                </li>
-                {index < filteredNav.length - 1 && (
-                  <span
-                    className="mx-2 text-3xl leading-3 md:mx-8"
-                    aria-hidden={true}
-                  >
-                    |
-                  </span>
-                )}
-              </React.Fragment>
-            ))}
-          </ul> */}
         </div>
       </div>
     </Bounded>
