@@ -36,7 +36,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
     ref,
   ) => {
     const isReady = useStore((state) => state.isReady);
-    const { nodes } = useGLTF("/models/sphere8.glb");
+    const { nodes } = useGLTF("/models/sphere.glb");
     const mesh =
       useRef<THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
     const mainRenderTarget = useFBO();
