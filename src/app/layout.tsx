@@ -41,7 +41,7 @@ export default function RootLayout({
         <main>
           <Header />
           {children}
-          {/* <ViewCanvas /> */}
+          <ViewCanvas />
           <Footer />
           {/* <Loader /> */}
         </main>

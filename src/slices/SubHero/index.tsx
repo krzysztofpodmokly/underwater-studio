@@ -85,9 +85,9 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
           </div>
         ))}
       </div>
-      <View className="pointer-events-none absolute top-60 -z-[100] hidden h-screen w-screen md:block">
+      {/* <View className="pointer-events-none absolute top-60 -z-[100] hidden h-screen w-screen md:block">
         <Scene />
-      </View>
+      </View> */}
     </Bounded>
   );
 };
