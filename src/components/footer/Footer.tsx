@@ -14,10 +14,6 @@ const Footer = async () => {
   const client = createClient();
   const navigation = await client.getSingle("navigation");
 
-  // const filteredNav = navigation.data.items.filter(
-  //   ({ label }) => label !== "Contact",
-  // );
-
   return (
     <Bounded
       as="footer"
