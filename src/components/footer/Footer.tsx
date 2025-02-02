@@ -14,9 +14,9 @@ const Footer = async () => {
   const client = createClient();
   const navigation = await client.getSingle("navigation");
 
-  const filteredNav = navigation.data.items.filter(
-    ({ label }) => label !== "Contact",
-  );
+  // const filteredNav = navigation.data.items.filter(
+  //   ({ label }) => label !== "Contact",
+  // );
 
   return (
     <Bounded
@@ -61,7 +61,7 @@ const Footer = async () => {
               <p>+48 728 532 307</p>
             </div>
           </div>
-          <FooterNav navigation={filteredNav} />
+          <FooterNav navigation={navigation.data.items} />
         </div>
       </div>
     </Bounded>
