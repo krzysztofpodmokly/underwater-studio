@@ -1,13 +1,13 @@
 "use client";
 
 import Heading from "@/components/heading/Heading";
+import { useGSAP } from "@gsap/react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import React, { useRef } from "react";
-import { MdCircle } from "react-icons/md";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import React, { useRef } from "react";
+import { MdCircle } from "react-icons/md";
 import AnimatedContent from "./AnimatedContent";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -31,7 +31,7 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
         trigger: containerRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: 4,
+        scrub: 2,
       },
     });
 
@@ -40,14 +40,14 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
       {
         x: (index) =>
           index % 2 === 0
-            ? gsap.utils.random(600, 400)
-            : gsap.utils.random(-600, -400),
+            ? gsap.utils.random(50, 60)
+            : gsap.utils.random(-50, -60),
       },
       {
         x: (index) =>
           index % 2 === 0
-            ? gsap.utils.random(-600, -400)
-            : gsap.utils.random(600, 400),
+            ? gsap.utils.random(-50, -60)
+            : gsap.utils.random(50, 60),
         ease: "power1.inOut",
       },
     );

@@ -6,8 +6,8 @@ import Dispersion from "@/components/3d/disperion/Dispersion";
 import { useRef } from "react";
 import { Group } from "three";
 
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Text3d from "./Text3d";
 
@@ -89,6 +89,7 @@ const Scene = () => {
 
   return (
     <>
+      <fog attach="fog" args={["#001011", 2, 15]} />
       <group position={[0, 0, 1]}>
         <group ref={bubble1GroupRef}>
           <Dispersion ref={bubble1Ref} {...bubbleConfig} name="primary" />

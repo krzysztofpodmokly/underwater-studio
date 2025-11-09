@@ -1,17 +1,16 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import { SliceComponentProps } from "@prismicio/react";
 import { View } from "@react-three/drei";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Heading from "@/components/heading/Heading";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
-import Heading from "@/components/heading/Heading";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 /**
  * Props for `Hero`.
@@ -24,7 +23,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  const isDesktop = useMediaQuery("(min-width: 768px)", true);
+  // const isDesktop = useMediaQuery("(min-width: 768px)", true);
   const ready = useStore((state) => state.ready);
 
   useGSAP(
@@ -93,42 +92,27 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <Scene />
       </View>
       <div className="relative z-[100] grid">
-        <div className="hidden place-items-center md:grid md:h-screen">
-          <div className="grid auto-rows-min place-items-center text-center">
-            {/* <h1 className="hero-header text-5xl font-black uppercase leading-[.8] text-slate-300 md:text-[4rem] lg:text-[6rem]">
-              {asText(slice.primary.heading)}
-            </h1> */}
-            {/* <div className="hero-subheading mt-12 text-3xl font-semibold text-slate-400 lg:text-4xl">
-              <PrismicRichText field={slice.primary.subheading} />
-            </div> */}
-            {/* <div className="hero-body text-balance text-2xl font-normal text-slate-500">
-              <PrismicRichText field={slice.primary.body} />
-            </div> */}
-            {/* <Button
-              buttonLink={slice.primary.button_link}
-              buttonText={slice.primary.button_text}
-              className="hero-button mt-12"
-            /> */}
-          </div>
-        </div>
+        <div className="hidden place-items-center md:grid md:h-screen"></div>
         <div className="md:h-screen"></div>
         <div className="mx-14">
-          <div className="grid h-[70vh] md:mb-0 md:h-screen md:grid-cols-2">
+          <div className="md:mb-0 md:h-screen md:grid-cols-2">
             <PrismicNextImage
               field={slice.primary.bubble_image}
               className="w-full rounded-xl md:hidden"
               alt=""
             />
-            <div className="glass-container mx-auto mt-10 h-fit gap-4 p-3">
-              <Heading as="h1" size="lg" center={!isDesktop}>
-                Where Art Meets Technology
-              </Heading>
-              <div className="text-side-body mt-4 max-w-fit text-balance text-center text-sm font-normal md:text-start md:text-lg lg:text-xl">
-                Welcome to Underwater Studio, a creative haven where artistry
-                and technology converge. We specialize in 3D modeling, website
-                creation, and drone footage filming, crafting digital
-                experiences that are as beautiful as they are functional. Let us
-                turn your vision into a masterpiece.
+            <div className="glass-container mx-auto mt-10 flex justify-center gap-4 p-3">
+              <div className="px-96">
+                <Heading as="h1" size="lg" center>
+                  Where Art Meets Technology
+                </Heading>
+                <p className="mt-4 max-w-fit text-balance text-justify text-sm font-normal md:text-lg lg:text-xl">
+                  Welcome to Underwater Studio, a creative haven where artistry
+                  and technology converge. We specialize in 3D modeling, website
+                  creation, and drone footage filming, crafting digital
+                  experiences that are as beautiful as they are functional. Let
+                  us turn your vision into a masterpiece.
+                </p>
               </div>
             </div>
           </div>

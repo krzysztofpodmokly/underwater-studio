@@ -1,14 +1,13 @@
-import { FaLinkedin, FaSquareInstagram, FaGithub } from "react-icons/fa6";
 import { createClient } from "@/prismicio";
-import React from "react";
 import Link from "next/link";
+import { FaGithub, FaLinkedin, FaSquareInstagram } from "react-icons/fa6";
 
 import Logo from "@/components/logo/Logo";
 
 import { Bounded } from "../Bounded";
-import MagneticIcon from "./MagneticIcon";
 import Bubble from "./3d/Bubble";
 import FooterNav from "./FooterNav";
+import MagneticIcon from "./MagneticIcon";
 
 const Footer = async () => {
   const client = createClient();
@@ -53,7 +52,12 @@ const Footer = async () => {
             </span>
             <div className="ml-8 text-sm text-slate-300 max-md:text-center md:ml-0">
               <p>© {new Date().getFullYear()} Underwater Studio</p>
-              <p className="my-1 text-balance">krzysztof.podmokly@gmail.com</p>
+              <a
+                href="mailto:krzysztof@underwater-studio.com"
+                className="my-1 text-balance hover:text-[#fe9000]"
+              >
+                krzysztof@underwater-studio.com
+              </a>
               <p>+48 728 532 307</p>
             </div>
           </div>

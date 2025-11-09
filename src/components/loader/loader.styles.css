@@ -1,0 +1,26 @@
+.spinning-wheel {
+  position: relative;
+  height: 200%;
+  animation: spin-wheel 3s infinite linear;
+  will-change: transform;
+}
+
+.wheel-item {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin-wheel {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.spinning-wheel {
+  animation-timing-function: cubic-bezier(0.2, 0.1, 0.05, 1.2);
+}

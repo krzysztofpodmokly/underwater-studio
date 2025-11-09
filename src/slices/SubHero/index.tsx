@@ -56,10 +56,10 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
       id="services"
     >
       <Heading as="h2" size="lg" center className="max-sm:mt-48">
-        Our Services
+        My Offer
       </Heading>
       <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">
-        Discover the pillars of our work.
+        Let me show you what can I do for you
       </div>
 
       <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-14 max-md:w-[90%] md:grid-cols-3">

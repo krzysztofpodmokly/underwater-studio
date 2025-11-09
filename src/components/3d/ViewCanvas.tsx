@@ -1,10 +1,10 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
 import { Preload, View } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 // import { Perf } from "r3f-perf";
-import { Suspense } from "react";
 import { Leva } from "leva";
+import { Suspense } from "react";
 
 const ViewCanvas = () => {
   return (

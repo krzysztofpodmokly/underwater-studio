@@ -2,13 +2,13 @@
 
 import { useFBO, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { folder, useControls } from "leva";
 import { forwardRef, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { useControls, folder } from "leva";
 
-import vertexShader from "./shaders/vertex.glsl";
-import fragmentShader from "./shaders/fragment.glsl";
 import { useStore } from "@/hooks/useStore";
+import fragmentShader from "./shaders/fragment.glsl";
+import vertexShader from "./shaders/vertex.glsl";
 
 type DispersionModelProps = {
   name: string;
