@@ -1,7 +1,7 @@
-import { ReactNode, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactNode, useRef } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -24,7 +24,7 @@ const AnimatedContent = ({ children }: Props) => {
         duration: 1,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 45%",
+          start: "top 80%",
           toggleActions: "play pause resume reverse",
         },
       },

@@ -20,14 +20,14 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     {
       title: "Website Creation",
       wide: false,
-      body: "We design websites that are not just functional but also works of art, tailored to your unique brand.",
+      body: "I design websites that are not only functional but also beautiful, crafted to reflect your unique brand.",
       image:
         "https://images.unsplash.com/photo-1537884944318-390069bb8665?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "3D Modeling",
       wide: true,
-      body: "Create immersive, lifelike 3D models for architecture, gaming, or product design",
+      body: "Design eye-catching 3D adverts and promotional visuals with Blender",
       image:
         "https://images.unsplash.com/photo-1642615835477-d303d7dc9ee9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
@@ -41,7 +41,7 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
     {
       title: "Creative Storytelling",
       wide: false,
-      body: "We help you craft compelling narratives that resonate with your audience, blending visuals and emotion.",
+      body: "Bring your story to life with creative montages that combine visuals and emotion.",
       image:
         "https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
@@ -58,9 +58,9 @@ const SubHero = ({ slice }: SubHeroProps): JSX.Element => {
       <Heading as="h2" size="lg" center className="max-sm:mt-48">
         My Offer
       </Heading>
-      <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">
+      <p className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300 md:text-lg">
         Let me show you what can I do for you
-      </div>
+      </p>
 
       <div className="z-[100] mt-16 grid max-w-[95rem] grid-rows-[auto,auto,auto] gap-14 max-md:w-[90%] md:grid-cols-3">
         {bentoBox.map((box) => (

@@ -2,11 +2,11 @@
 
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
-import React, { useState } from "react";
-import { MdMenu, MdClose, MdArrowBack } from "react-icons/md";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { MdArrowBack, MdClose, MdMenu } from "react-icons/md";
 
 import DesktopMenu from "@/components/navigation/DesktopMenu";
 
@@ -19,7 +19,9 @@ const Navigation = ({ navigation }: Props) => {
   const pathname = usePathname();
 
   const handleScrollIntoView = (target: string) => {
-    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    document
+      .querySelector(target)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
     setOpen(false);
   };
 
@@ -78,10 +80,10 @@ const Navigation = ({ navigation }: Props) => {
                 {label !== "Home" ? (
                   <PrismicNextLink
                     field={link}
-                    onClick={() =>
-                      isFilled.keyText(link.text) &&
-                      handleScrollIntoView(`#${link.text}`)
-                    }
+                    onClick={() => {
+                      if (!isFilled.keyText(link.text)) return;
+                      handleScrollIntoView(`#${link.text}`);
+                    }}
                     className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
                   >
                     {label}

@@ -1,7 +1,7 @@
+import { createClient } from "@/prismicio";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import ProjectsList from "./ProjectsList";
-import { createClient } from "@/prismicio";
 
 import { Bounded } from "@/components/Bounded";
 import Heading from "@/components/heading/Heading";
@@ -29,7 +29,7 @@ const Projects = async ({ slice }: ProjectsProps): Promise<JSX.Element> => {
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center md:text-lg">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}

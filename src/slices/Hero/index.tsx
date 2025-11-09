@@ -101,17 +101,15 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               className="w-full rounded-xl md:hidden"
               alt=""
             />
-            <div className="glass-container mx-auto mt-10 flex justify-center gap-4 p-3">
+            <div className="glass-container mx-auto mt-10 flex justify-center gap-4 py-20">
               <div className="px-96">
                 <Heading as="h1" size="lg" center>
                   Where Art Meets Technology
                 </Heading>
-                <p className="mt-4 max-w-fit text-balance text-justify text-sm font-normal md:text-lg lg:text-xl">
-                  Welcome to Underwater Studio, a creative haven where artistry
-                  and technology converge. We specialize in 3D modeling, website
-                  creation, and drone footage filming, crafting digital
-                  experiences that are as beautiful as they are functional. Let
-                  us turn your vision into a masterpiece.
+                <p className="mt-4 max-w-fit text-balance pt-4 text-justify text-sm font-normal md:text-lg lg:text-xl">
+                  I create 3D models, build websites, and capture stunning drone
+                  footage to bring your ideas to life. Let’s turn your vision
+                  into something truly special.
                 </p>
               </div>
             </div>
