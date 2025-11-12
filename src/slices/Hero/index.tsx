@@ -88,7 +88,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+      <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] h-screen w-screen md:block">
         <Scene />
       </View>
       <div className="relative z-[100] grid">
@@ -101,8 +101,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               className="w-full rounded-xl md:hidden"
               alt=""
             />
-            <div className="glass-container mx-auto mt-10 flex justify-center gap-4 py-20">
-              <div className="px-96">
+            <div className="glass-container mt-10 flex justify-center gap-4 py-20">
+              <div className="lg:px-96">
                 <Heading as="h1" size="lg" center>
                   Where Art Meets Technology
                 </Heading>
