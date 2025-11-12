@@ -9,7 +9,6 @@ import * as THREE from "three";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Text3dMobile from "./Text3dMobile";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -21,12 +20,12 @@ const SceneMobile = () => {
   const bubble2GroupRef = useRef<THREE.Group>(null);
 
   const bubbleConfig = {
-    positionFrequency: 0.15,
-    timeFrequency: 0.25,
-    strength: 0.15,
-    warpPositionFrequency: 1.3,
-    warpTimeFrequency: 0.4,
-    warpStrength: 0.6,
+    positionFrequency: 0.2,
+    timeFrequency: 0.3,
+    strength: 0.1,
+    warpPositionFrequency: 1.1,
+    warpTimeFrequency: -0.4,
+    warpStrength: -0.6,
     light: { x: -8, y: -15, z: 1 },
   };
 
@@ -50,7 +49,7 @@ const SceneMobile = () => {
 
     gsap.set(bubble1Ref.current.position, { x: -0.1, y: 0, z: 0 });
     gsap.set(bubble2Ref.current.position, { x: -0.5, y: -2.5, z: -2.5 });
-    // gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
+    gsap.set(bubble1GroupRef.current.scale, { x: 1.5, y: 1.5, z: 1.5 });
     gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
 
     if (window.scrollY < 20) {
@@ -74,17 +73,17 @@ const SceneMobile = () => {
       },
       scrollTrigger: {
         trigger: ".hero",
-        start: "top top",
-        end: "bottom bottom",
+        start: "50% bottom",
+        end: "bottom 30%",
         scrub: 1.5,
       },
     });
 
     scrollTl
-      //   .to(bubble1Ref.current.scale, { x: 0.5, y: 0.5, z: 0.5 }, 1.3)
+      .to(bubble1Ref.current.scale, { x: 0.5, y: 0.5, z: 0.5 }, 1.3)
       .to(bubble1Ref.current.position, { x: 0.8, y: -0.3, z: 0 }, "<")
-      .to(bubble2Ref.current.position, { x: 0, y: 0.1, z: 0 }, "<");
-    //   .to(bubble2Ref.current.scale, { x: 2, y: 2, z: 2 }, "<");
+      .to(bubble2Ref.current.position, { x: 0, y: 0.1, z: 0 }, "<")
+      .to(bubble2Ref.current.scale, { x: 1.5, y: 1.5, z: 1.5 }, "<");
   });
 
   return (
@@ -92,25 +91,14 @@ const SceneMobile = () => {
       <fog attach="fog" args={["#001011", 2, 15]} />
       <group position={[0, 0, 1]}>
         <group ref={bubble1GroupRef}>
-          <Dispersion
-            ref={bubble1Ref}
-            {...bubbleConfig}
-            scale={new THREE.Vector3(0.35, 0.39, 0.38)}
-            name="primary"
-          />
+          <Dispersion ref={bubble1Ref} {...bubbleConfig} name="primary" />
         </group>
         <group ref={bubble2GroupRef}>
-          <Dispersion
-            ref={bubble2Ref}
-            {...bubbleConfig2}
-            scale={new THREE.Vector3(0.4, 0.41, 0.39)}
-            name="secondary"
-          />
+          <Dispersion ref={bubble2Ref} {...bubbleConfig2} name="secondary" />
         </group>
       </group>
 
       <Environment preset="city" />
-      <Text3dMobile />
     </>
   );
 };

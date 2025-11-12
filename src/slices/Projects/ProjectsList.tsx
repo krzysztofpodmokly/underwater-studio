@@ -56,24 +56,36 @@ const ProjectsList = ({
   );
 
   useGSAP(() => {
-    projectsRef.current.forEach((project) => {
-      gsap.fromTo(
-        project,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.3,
-          ease: "elastic.out(1,0.3)",
-          scrollTrigger: {
-            trigger: project,
-            start: "top bottom-=100px",
-            end: "bottom center",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    });
+    const mm = gsap.matchMedia();
+
+    mm.add(
+      {
+        isDesktop: "(min-width: 768px)",
+        isMobile: "(max-width: 767px)",
+      },
+      (context) => {
+        projectsRef.current.forEach((project) => {
+          gsap.fromTo(
+            project,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.3,
+              ease: "elastic.out(1,0.3)",
+              scrollTrigger: {
+                trigger: project,
+                start: `top bottom${context?.conditions?.isDesktop ? "-" : "+"}=150px`,
+                end: "bottom center",
+                toggleActions: "play none none none",
+              },
+            },
+          );
+        });
+      },
+    );
+
+    return () => mm.revert();
   });
 
   useEffect(() => {

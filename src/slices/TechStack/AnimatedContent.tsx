@@ -15,20 +15,34 @@ const AnimatedContent = ({ children }: Props) => {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    gsap.fromTo(
-      containerRef.current,
-      { y: 100 },
+    const mm = gsap.matchMedia();
+
+    mm.add(
       {
-        y: 30,
-        ease: "power2.inOut",
-        duration: 1,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play pause resume reverse",
-        },
+        isDesktop: "(min-width: 768px)",
+        isMobile: "(max-width: 767px)",
+      },
+      (context) => {
+        const isDesktop = context?.conditions?.isDesktop;
+
+        gsap.fromTo(
+          containerRef.current,
+          { y: 100 },
+          {
+            y: `${isDesktop ? 0 : 60}`,
+            ease: "power2.inOut",
+            duration: 1,
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: `top ${isDesktop ? "80%" : "140%"}`,
+              toggleActions: "play pause resume reverse",
+            },
+          },
+        );
       },
     );
+
+    return () => mm.revert();
   });
 
   return (

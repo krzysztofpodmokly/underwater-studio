@@ -90,21 +90,16 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      {/* {isDesktop ? (
-        <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-screen w-screen md:-mt-[100vh]">
+      {isDesktop ? (
+        <View className="pointer-events-none sticky top-0 z-50 h-screen w-screen md:-mt-[100vh]">
           {<Scene />}
         </View>
       ) : (
-        <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-screen w-screen md:-mt-[100vh]">
+        <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-[300px] w-screen">
           {<SceneMobile />}
         </View>
-      )} */}
-      <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-screen w-screen md:-mt-[100vh]">
-        {<SceneMobile />}
-      </View>
-      {/* <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-screen w-screen md:-mt-[100vh]">
-        {isDesktop ? <Scene /> : <SceneMobile />}
-      </View> */}
+      )}
+
       <div className="relative z-[100] grid">
         <div className="hidden place-items-center md:grid md:h-screen"></div>
         <div className="md:h-screen"></div>
