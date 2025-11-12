@@ -95,7 +95,7 @@ const SceneMobile = () => {
           <Dispersion
             ref={bubble1Ref}
             {...bubbleConfig}
-            scale={new THREE.Vector3(0.37, 0.39, 0.38)}
+            scale={new THREE.Vector3(0.35, 0.39, 0.38)}
             name="primary"
           />
         </group>

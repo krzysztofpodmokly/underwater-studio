@@ -105,15 +105,15 @@ const Text3dMobile = () => {
     const NFinalPos = { x: -2.372, y: 0.07, z: 0 };
     const U2FinalPos = { x: -2.983, y: 0.086, z: 0 };
 
-    gsap.set(URef.current.position, { x: 0, y: 0, z: 0 });
-    gsap.set(NRef.current.position, { x: 1, y: 0, z: 0 });
+    gsap.set(URef.current.position, { x: 17, y: 10, z: -300 });
+    gsap.set(NRef.current.position, { x: 4, y: -8, z: -100 });
     gsap.set(DRef.current.position, { x: 2, y: 1, z: -120 });
     gsap.set(ERef.current.position, { x: 15, y: 13, z: -120 });
     gsap.set(RRef.current.position, { x: 5, y: -20, z: -130 });
     gsap.set(WRef.current.position, { x: 20, y: 12, z: -160 });
     gsap.set(ARef.current.position, { x: -13, y: -3, z: 25 });
     gsap.set(TRef.current.position, { x: -3, y: 22, z: -200 });
-    gsap.set(E2Ref.current.position, { x: 8, y: 6, z: 16 });
+    gsap.set(E2Ref.current.position, { x: 0, y: -1, z: 0 }); // 3 as E
     gsap.set(R2Ref.current.position, { x: -23, y: -3, z: 20 });
 
     gsap.set(SRef.current.position, { x: -8, y: 3, z: -160 });
@@ -188,7 +188,7 @@ const Text3dMobile = () => {
         { x: 2, y: 0.3, duration: 3, ease: "power1.inOut" },
         1.2,
       )
-      .to(containerRef.current.scale, { x: 0.2, y: 0.2, z: 0.2 }, 1.5);
+      .to(containerRef.current.scale, { x: 0.6, y: 0.6, z: 0.6 }, 1.5);
   });
 
   return (
@@ -357,6 +357,7 @@ const Text3dMobile = () => {
             geometry={(nodes["3"] as THREE.Mesh).geometry}
             position={[-1.205, 0.059, 0]}
             rotation={[Math.PI / 2, 0, 0]}
+            scale={[2, 2, 2]}
             ref={E2Ref}
           >
             <meshStandardMaterial color="#3aafb9" />
