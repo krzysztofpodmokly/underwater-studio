@@ -9,7 +9,7 @@ import * as THREE from "three";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Text3d from "./Text3d";
+import Text3dMobile from "./Text3dMobile";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -31,12 +31,12 @@ const SceneMobile = () => {
   };
 
   const bubbleConfig2 = {
-    positionFrequency: 0.35,
-    timeFrequency: 0.25,
-    strength: 0.15,
-    warpPositionFrequency: 1.3,
-    warpTimeFrequency: 0.4,
-    warpStrength: 0.6,
+    positionFrequency: 0.3,
+    timeFrequency: 0.2,
+    strength: 0.14,
+    warpPositionFrequency: 1.2,
+    warpTimeFrequency: 0.35,
+    warpStrength: 0.4,
   };
 
   useGSAP(() => {
@@ -48,7 +48,7 @@ const SceneMobile = () => {
     )
       return;
 
-    gsap.set(bubble1Ref.current.position, { x: 0, y: 0, z: 0 });
+    gsap.set(bubble1Ref.current.position, { x: -0.1, y: 0, z: 0 });
     gsap.set(bubble2Ref.current.position, { x: -0.5, y: -2.5, z: -2.5 });
     // gsap.set(bubble1GroupRef.current.scale, { x: 2, y: 2, z: 2 });
     gsap.set(bubble2GroupRef.current.position, { x: 0, y: 0, z: 0 });
@@ -95,7 +95,7 @@ const SceneMobile = () => {
           <Dispersion
             ref={bubble1Ref}
             {...bubbleConfig}
-            scale={new THREE.Vector3(0.3, 0.3, 0.3)}
+            scale={new THREE.Vector3(0.37, 0.39, 0.38)}
             name="primary"
           />
         </group>
@@ -103,14 +103,14 @@ const SceneMobile = () => {
           <Dispersion
             ref={bubble2Ref}
             {...bubbleConfig2}
-            scale={new THREE.Vector3(0.3, 0.3, 0.3)}
+            scale={new THREE.Vector3(0.4, 0.41, 0.39)}
             name="secondary"
           />
         </group>
       </group>
 
       <Environment preset="city" />
-      <Text3d />
+      <Text3dMobile />
     </>
   );
 };

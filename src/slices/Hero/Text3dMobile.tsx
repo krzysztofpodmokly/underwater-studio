@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const Text3d = () => {
+const Text3dMobile = () => {
   const { nodes } = useGLTF("/models/underwater-text.gltf");
 
   const URef = useRef<THREE.Mesh>(null);
@@ -105,8 +105,8 @@ const Text3d = () => {
     const NFinalPos = { x: -2.372, y: 0.07, z: 0 };
     const U2FinalPos = { x: -2.983, y: 0.086, z: 0 };
 
-    gsap.set(URef.current.position, { x: 17, y: 10, z: -300 });
-    gsap.set(NRef.current.position, { x: 4, y: -8, z: -100 });
+    gsap.set(URef.current.position, { x: 0, y: 0, z: 0 });
+    gsap.set(NRef.current.position, { x: 1, y: 0, z: 0 });
     gsap.set(DRef.current.position, { x: 2, y: 1, z: -120 });
     gsap.set(ERef.current.position, { x: 15, y: 13, z: -120 });
     gsap.set(RRef.current.position, { x: 5, y: -20, z: -130 });
@@ -188,7 +188,7 @@ const Text3d = () => {
         { x: 2, y: 0.3, duration: 3, ease: "power1.inOut" },
         1.2,
       )
-      .to(containerRef.current.scale, { x: 0.6, y: 0.6, z: 0.6 }, 1.5);
+      .to(containerRef.current.scale, { x: 0.2, y: 0.2, z: 0.2 }, 1.5);
   });
 
   return (
@@ -406,4 +406,4 @@ const Text3d = () => {
   );
 };
 
-export default Text3d;
+export default Text3dMobile;
