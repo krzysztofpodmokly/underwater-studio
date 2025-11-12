@@ -19,6 +19,7 @@ type DispersionModelProps = {
   warpTimeFrequency?: number;
   warpStrength?: number;
   light?: { x: number; y: number; z: number };
+  scale?: THREE.Vector3 | [number, number, number];
 };
 
 const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
@@ -32,6 +33,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
       warpTimeFrequency = 0.4,
       warpStrength = 0.6,
       light: lightConfig = { x: -1, y: -1, z: 1 },
+      scale = [0.5, 0.5, 0.5],
     },
     ref,
   ) => {
@@ -193,7 +195,7 @@ const Dispersion = forwardRef<THREE.Group, DispersionModelProps>(
         <mesh
           geometry={(nodes.Icosphere as THREE.Mesh).geometry}
           ref={mesh}
-          scale={[0.5, 0.5, 0.5]}
+          scale={scale}
         >
           <shaderMaterial
             vertexShader={vertexShader}

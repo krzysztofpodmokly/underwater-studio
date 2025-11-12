@@ -42,7 +42,7 @@ const Footer = async () => {
           </Link>
         </div>
         <div className="relative top-40 flex w-full flex-col justify-between md:flex-row">
-          <div className="order-1 mt-12 flex flex-col items-center justify-center md:-order-1 md:flex-row">
+          <div className="order-1 mt-32 flex flex-col items-center justify-center md:-order-1 md:mt-12 md:flex-row">
             <Logo className="order-1 max-md:mt-10 md:-order-1" />
             <span
               className="mx-8 hidden text-3xl leading-3 md:block"
@@ -50,7 +50,7 @@ const Footer = async () => {
             >
               |
             </span>
-            <div className="ml-8 text-sm text-slate-300 max-md:text-center md:ml-0">
+            <div className="text-sm text-slate-300 max-md:text-center lg:ml-8">
               <p>© {new Date().getFullYear()} Underwater Studio</p>
               <a
                 href="mailto:krzysztof@underwater-studio.com"

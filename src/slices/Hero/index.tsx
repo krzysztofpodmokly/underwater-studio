@@ -11,6 +11,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Heading from "@/components/heading/Heading";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import SceneMobile from "./SceneMobile";
 
 /**
  * Props for `Hero`.
@@ -23,7 +25,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  // const isDesktop = useMediaQuery("(min-width: 768px)", true);
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
   const ready = useStore((state) => state.ready);
 
   useGSAP(
@@ -88,19 +90,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      <View className="pointer-events-none sticky top-0 z-50 -mt-[100vh] h-screen w-screen md:block">
-        <Scene />
+      <View className="pointer-events-none sticky top-0 z-50 -mt-[10vh] h-screen w-screen md:-mt-[100vh] md:block">
+        {isDesktop ? <Scene /> : <SceneMobile />}
       </View>
       <div className="relative z-[100] grid">
         <div className="hidden place-items-center md:grid md:h-screen"></div>
         <div className="md:h-screen"></div>
         <div className="mx-14">
           <div className="md:mb-0 md:h-screen md:grid-cols-2">
-            <PrismicNextImage
-              field={slice.primary.bubble_image}
-              className="w-full rounded-xl md:hidden"
-              alt=""
-            />
             <div className="glass-container mt-10 flex justify-center gap-4 py-20">
               <div className="lg:px-96">
                 <Heading as="h1" size="lg" center>
