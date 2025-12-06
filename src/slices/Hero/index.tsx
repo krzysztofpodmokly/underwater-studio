@@ -2,16 +2,15 @@
 
 import { useGSAP } from "@gsap/react";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { View } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Heading from "@/components/heading/Heading";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useStore } from "@/hooks/useStore";
 import Scene from "./Scene";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SceneMobile from "./SceneMobile";
 
 /**

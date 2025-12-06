@@ -3,12 +3,16 @@
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import clsx from "clsx";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { MdArrowBack, MdClose, MdMenu } from "react-icons/md";
 
 import DesktopMenu from "@/components/navigation/DesktopMenu";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 type Props = {
   navigation: Content.NavigationDocument;
@@ -18,11 +22,20 @@ const Navigation = ({ navigation }: Props) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  const handleScrollIntoView = (target: string) => {
-    document
-      .querySelector(target)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    setOpen(false);
+  const handleScrollTo = (target: string) => {
+    const element = document.querySelector(target);
+    if (element) {
+      gsap.to(window, {
+        duration: 0.2,
+        scrollTo: {
+          y: element,
+          offsetY: 0,
+        },
+        ease: "power2.inOut",
+      });
+
+      setOpen(false);
+    }
   };
 
   const isHomepage = pathname === "/";
@@ -34,8 +47,6 @@ const Navigation = ({ navigation }: Props) => {
           (item) => item.label !== "Services" && item.label !== "Projects",
         ),
       ];
-
-  console.log(filteredNav);
 
   return (
     <nav aria-label="Main navigation" className="relative z-[1001]">
@@ -82,9 +93,11 @@ const Navigation = ({ navigation }: Props) => {
                 {label !== "Home" ? (
                   <PrismicNextLink
                     field={link}
-                    onClick={() => {
-                      if (!isFilled.keyText(link.text)) return;
-                      handleScrollIntoView(`#${link.text}`);
+                    onClick={(e) => {
+                      if (isFilled.keyText(link.text)) {
+                        e.preventDefault();
+                        handleScrollTo(`#${link.text}`);
+                      }
                     }}
                     className="my-10 text-3xl transition-colors duration-150 hover:text-[#fe9000]"
                   >
